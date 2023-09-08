@@ -8,10 +8,15 @@ using Emotion.Common;
 using Emotion.Game.World2D;
 using Emotion.Game.World2D.SceneControl;
 using Emotion.Graphics;
+using Emotion.Graphics.Objects;
+using Emotion.Graphics.Shading;
 using Emotion.IO;
 using Emotion.Primitives;
 using Emotion.Testing;
 using Emotion.Utility;
+using Microsoft.VisualBasic.FileIO;
+using OpenGL;
+using WinApi.User32;
 
 #endregion
 
@@ -103,10 +108,10 @@ public class LemonDrop
 }
 
 
-public class Cup
+public class Cup : GameObject2D
+
 {
     public float velosity = (10f / (1000 / 60f)) * Engine.DeltaTime;
-    public Vector3 Position;
 
     public Color color = Color.White;
     public Vector2 Scale = new Vector2(10, 15);
@@ -115,27 +120,33 @@ public class Cup
 
     public int dropsCount = 0;
 
-    public void Update(List<LemonDrop> lemonDrops)
+    //List<LemonDrop> lemonDrops;
+
+
+
+    protected override void UpdateInternal(float dt)
     {
         
         if (Engine.Host.IsKeyHeld(Platform.Input.Key.UpArrow))
         {
-            Position.Y = Position.Y - velosity;
+            Y = Position.Y - velosity;
         }
         if (Engine.Host.IsKeyHeld(Platform.Input.Key.DownArrow))
         {
-            Position.Y = Position.Y + velosity;
+            Y = Position.Y + velosity;
         }
         if (Engine.Host.IsKeyHeld(Platform.Input.Key.RightArrow))
         {
-            Position.X = Position.X + velosity;
+            X = Position.X + velosity;
         }
         if (Engine.Host.IsKeyHeld(Platform.Input.Key.LeftArrow))
         {
-            Position.X = Position.X - velosity;
+            X = Position.X - velosity;
         }
 
+       // Map.GetObjects();
 
+        /*
         for (int i = 0; i < lemonDrops.Count; i++)
         {
             LemonDrop drop = lemonDrops[i];
@@ -146,15 +157,21 @@ public class Cup
                 i--;
             }
         }
+        */
         
     }
 
+    public override async Task LoadAssetsAsync()
+    {
+        textureAsset = await Engine.AssetLoader.GetAsync<TextureAsset>("a_cup.png");
+    }
     public void Load()
     {
-        textureAsset = Engine.AssetLoader.Get<TextureAsset>("a_cup.png");
+        
     }
 
-    public void Draw(RenderComposer composer)
+
+    protected override void RenderInternal(RenderComposer composer)
     {
         Vector2 juiceSize = textureAsset.Texture.Size - new Vector2(20, 20);
         Vector2 juiceCurrent = juiceSize * new Vector2(1f, dropsCount / 20f);
@@ -167,19 +184,26 @@ public class Cup
 
 public class TestScene2D : World2DBaseScene<Map2D>
 {
-	public override Task LoadAsync()
+    private ShaderAsset _triangleShader;
+
+	public override async Task LoadAsync()
 	{
 		//_editor.EnterEditor();
-
+        
         cup = new Cup();
         cup.Position = new Vector3(50, 50, 0);
         cup.Load();
 		lemin = new Lemon();
         lemonDrops = new();
-        
 
+        await ChangeMapAsync(new Map2D(new Vector2(0, 0), "vlad"));
+        CurrentMap.AddObject(cup);
 
-		return Task.CompletedTask;
+        //CurrentMap
+
+        _triangleShader = Engine.AssetLoader.Get<ShaderAsset>("Shaders/HelloTriangle.xml");
+
+        //return Task.CompletedTask;
 	}
 
 	public Vector3 Position;
@@ -187,17 +211,74 @@ public class TestScene2D : World2DBaseScene<Map2D>
     public Cup cup;
     public List<LemonDrop> lemonDrops;
 
-	public override void Draw(RenderComposer composer)
+    struct Colored
+    {
+        public Color color;
+        public Vector3 position;
+
+        public Colored(Color color, Vector3 position)
+        {
+            this.color = color;
+            this.position = position;
+        }
+    }
+
+    public override void Draw(RenderComposer composer)
 	{
 		composer.SetUseViewMatrix(false);
 		composer.RenderSprite(Vector3.Zero, composer.CurrentTarget.Size, Color.CornflowerBlue);
+
+        {
+            composer.SetShader(_triangleShader.Shader);
+
+            uint vbo = Gl.GenBuffer();
+            /*
+            Vector3 a = new Vector3(1, 0, 0);
+            Vector3 b = new Vector3(0, 1, 0);
+            Vector3 c = new Vector3(-1, 0, 0);
+            Vector3[] triangle = new Vector3[] { a, b, c };
+            */
+
+            Colored a = new Colored(Color.PrettyYellow, new Vector3(0.5f, -0.2f, 0));
+            Colored b = new Colored(Color.PrettyBlue, new Vector3(0, 0.5f, 0));
+            Colored c = new Colored(Color.PrettyRed, new Vector3(-0.5f, -0.2f, 0));
+            Colored[] triangle = new Colored[] { a, b, c };
+
+            Gl.BindBuffer(BufferTarget.ArrayBuffer, vbo);
+            // sizeof(float)*3 -> the vectors; sizeof(byte)*4 -> Color 
+            // sizeof(float)*3 + sizeof(byte)*4) -> one Colored object
+            // sizeof(float)*3 + sizeof(byte)*4) * 3 -> the triangle array
+            Gl.BufferData(BufferTarget.ArrayBuffer, (sizeof(float) * 3 + sizeof(byte) * 4) * 3, triangle, BufferUsage.StaticDraw);
+
+            uint vao = Gl.GenVertexArray();
+
+            Gl.BindVertexArray(vao);
+
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(0, 4, VertexAttribType.UnsignedByte, true, sizeof(float) * 3 + sizeof(byte) * 4, 0);
+
+            Gl.EnableVertexAttribArray(1);
+            Gl.VertexAttribPointer(1, 3, VertexAttribType.Float, false, sizeof(float) * 3 + sizeof(byte) * 4, sizeof(byte) * 4);
+
+            Gl.DrawArrays(PrimitiveType.Triangles, 0, 3);
+
+            Gl.DeleteBuffers(vbo);
+            Gl.DeleteVertexArrays(vao);
+
+            composer.SetShader(null);
+
+            VertexBuffer.Bound = 0;
+            IndexBuffer.Bound = 0;
+            VertexArrayObject.Bound = 0;
+        }
+
         composer.RenderString(new Vector3(0, 0, 0), Color.Black, $"Score: {cup.dropsCount}", FontAsset.GetDefaultBuiltIn().GetAtlas(20f));
 		composer.ClearDepth();
 		composer.SetUseViewMatrix(true);
 
 		//composer.RenderEllipse(Position, new Vector2(10, 15), Color.PrettyYellow, true);
 		lemin.Draw(composer);
-        cup.Draw(composer);
+        //cup.Draw(composer);
 
         foreach (var drop in lemonDrops)
         {
@@ -231,7 +312,7 @@ public class TestScene2D : World2DBaseScene<Map2D>
 		*/
 
 		lemin.Update(lemonDrops);
-        cup.Update(lemonDrops);
+        //cup.Update(lemonDrops);
         foreach (var drop in lemonDrops)
         {
             drop.Update();

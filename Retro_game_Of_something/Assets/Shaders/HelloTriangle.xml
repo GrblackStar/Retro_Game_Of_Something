@@ -1,0 +1,4 @@
+<ShaderDescription>
+  <Frag>Shaders/HelloTriangle.frag</Frag>
+  <Vert>Shaders/HelloTriangle.vert</Vert>
+</ShaderDescription>
