@@ -1,5 +1,6 @@
 #version v 
  
+ uniform mat4 modelMatrix; 
 
 layout(location = 0)in vec4 color;
 layout(location = 1)in vec3 vertPos; 
@@ -12,5 +13,5 @@ void main() {
     vertColor = color;
     
     // Multiply by projection.
-    gl_Position = vec4(vertPos, 1.0);
+    gl_Position = modelMatrix * vec4(vertPos, 1.0);
 }

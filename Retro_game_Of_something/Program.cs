@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Threading.Tasks;
 using Emotion.Common;
+using Emotion.Common.Threading;
 using Emotion.Game.World2D;
 using Emotion.Game.World2D.SceneControl;
 using Emotion.Graphics;
@@ -39,10 +40,9 @@ public class Program
 	}
 }
 
-public class Lemon
+public class Lemon : GameObject2D
 {
 	public float velosity = (10f / (1000 / 60f)) * Engine.DeltaTime;
-	public Vector3 Position;
 
 	public Color color =  Color.PrettyYellow;
 	public Vector2 Scale = new Vector2(10, 15);
@@ -50,59 +50,71 @@ public class Lemon
     public float SpawnTime = 10;
     public float timepassed = 0;
 
-    public void Update(List<LemonDrop> lemonDrops)
-	{
+    protected override void UpdateInternal(float dt)
+    {
         if (Engine.Host.IsKeyHeld(Platform.Input.Key.W))
         {
-            Position.Y = Position.Y - velosity;
+            Y = Position.Y - velosity;
         }
         if (Engine.Host.IsKeyHeld(Platform.Input.Key.S))
         {
-            Position.Y = Position.Y + velosity;
+            Y = Position.Y + velosity;
         }
         if (Engine.Host.IsKeyHeld(Platform.Input.Key.D))
         {
-            Position.X = Position.X + velosity;
+            X = Position.X + velosity;
         }
         if (Engine.Host.IsKeyHeld(Platform.Input.Key.A))
         {
-            Position.X = Position.X - velosity;
+            X = Position.X - velosity;
         }
 
         if (Engine.Host.IsKeyDown(Platform.Input.Key.Space))
         {
             LemonDrop lemonDrop = new LemonDrop();
             lemonDrop.Position = Position;
-            lemonDrops.Add(lemonDrop);
+            //lemonDrops.Add(lemonDrop);
+            
+            // HOOOOLY HELL IT WORKED
+            Map.AddObject(lemonDrop);
 
         }
     }
 
-	public void Draw(RenderComposer composer)
-	{
+    protected override void RenderInternal(RenderComposer composer)
+    {
         composer.RenderEllipse(Position, Scale, color, true);
+    }
+
+    public void Load()
+    {
+
     }
 
 }
 
 
-public class LemonDrop
+public class LemonDrop : GameObject2D
 {
     public float velosity = (10f / (1000 / 60f)) * Engine.DeltaTime;
-    public Vector3 Position;
 
     public Color color = Color.PrettyYellow;
     public Vector2 Scale = new Vector2(5, 5);
 
 
-    public void Update()
+    protected override void UpdateInternal(float dt)
     {
-        Position.Y += velosity;
+        Y += velosity;
     }
 
-    public void Draw(RenderComposer composer)
+    protected override void RenderInternal(RenderComposer composer)
     {
         composer.RenderEllipse(Position, Scale, color, true);
+    }
+
+    public void Load()
+    {
+
     }
 
 }
@@ -119,10 +131,7 @@ public class Cup : GameObject2D
     public TextureAsset textureAsset;
 
     public int dropsCount = 0;
-
-    //List<LemonDrop> lemonDrops;
-
-
+    List<LemonDrop> lemonDrops = new List<LemonDrop>();
 
     protected override void UpdateInternal(float dt)
     {
@@ -144,7 +153,25 @@ public class Cup : GameObject2D
             X = Position.X - velosity;
         }
 
-       // Map.GetObjects();
+
+
+        //Map.GetObjects();
+        //Console.WriteLine(Map.GetObjects().Count());
+        //Map.GetObjectByType<LemonDrop>();
+        //Console.WriteLine(Map.GetObjectByType<LemonDrop>());
+        //lemonDrops.Add(Map.GetObjectByType<LemonDrop>());
+        //Console.WriteLine(Map.GetObjectsByType<LemonDrop>().Count());
+
+        for (int i = 0; i < Map.GetObjectsByType<LemonDrop>().Count(); i++)
+        {
+            LemonDrop drop = Map.GetObjectsByType<LemonDrop>().ElementAt(i);
+            if (Math.Abs((drop.Position.Y + drop.Scale.Y) - this.Position.Y) <= 10)
+            {
+                dropsCount++;
+                Map.RemoveObject(drop);
+            }
+        }
+
 
         /*
         for (int i = 0; i < lemonDrops.Count; i++)
@@ -158,7 +185,7 @@ public class Cup : GameObject2D
             }
         }
         */
-        
+
     }
 
     public override async Task LoadAssetsAsync()
@@ -182,24 +209,142 @@ public class Cup : GameObject2D
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class TestScene2D : World2DBaseScene<Map2D>
 {
     private ShaderAsset _triangleShader;
+    private Colored[] _triangle = new Colored[] {
+                new Colored(Color.PrettyYellow, new Vector3(0.5f, -0.2f, 0)),
+                new Colored(Color.PrettyBlue, new Vector3(0, 0.5f, 0)),
+                new Colored(Color.PrettyRed, new Vector3(-0.5f, -0.2f, 0)),
 
-	public override async Task LoadAsync()
+               new Colored(Color.PrettyYellow, new Vector3(-0.5f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.48f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.48f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.5f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.48f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.5f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.4f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.38f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.38f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.4f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.38f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.4f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.48f, 0.765f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.4f, 0.765f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.4f, 0.785f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.48f, 0.765f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.4f, 0.785f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.48f, 0.785f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.3f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.28f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.28f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.3f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.28f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.3f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.28f, 0.93f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.2f, 0.93f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.2f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.28f, 0.93f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.2f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.28f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.28f, 0.765f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.22f, 0.765f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.22f, 0.785f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.28f, 0.765f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.22f, 0.785f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.28f, 0.785f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.28f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.2f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.2f, 0.62f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.28f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.2f, 0.62f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.28f, 0.62f, 0))
+
+               };
+    uint vbo;
+    uint vao;
+
+
+    public override async Task LoadAsync()
 	{
 		//_editor.EnterEditor();
         
+        // can directly initilize the riangles and than just to dram them in the Draw(), so they don't get calculated every frame
         cup = new Cup();
         cup.Position = new Vector3(50, 50, 0);
         cup.Load();
+
 		lemin = new Lemon();
+        lemin.Position = new Vector3(0, 0, 0);
+        lemin.Load();
+
         lemonDrops = new();
+
+        GLThread.ExecuteGLThread(() =>
+        {
+            vbo = Gl.GenBuffer();
+            vao = Gl.GenVertexArray();
+
+            Gl.BindBuffer(BufferTarget.ArrayBuffer, vbo);
+            Gl.BindVertexArray(vao);
+
+
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(0, 4, VertexAttribType.UnsignedByte, true, sizeof(float) * 3 + sizeof(byte) * 4, 0);
+
+            Gl.EnableVertexAttribArray(1);
+            Gl.VertexAttribPointer(1, 3, VertexAttribType.Float, false, sizeof(float) * 3 + sizeof(byte) * 4, sizeof(byte) * 4);
+
+
+            Gl.BufferData(BufferTarget.ArrayBuffer, (sizeof(float) * 3 + sizeof(byte) * 4) * (uint)_triangle.Length, _triangle, BufferUsage.StaticDraw);
+            //Gl.DrawArrays(PrimitiveType.Triangles, 0, _triangle.Length);
+
+        });
+
 
         await ChangeMapAsync(new Map2D(new Vector2(0, 0), "vlad"));
         CurrentMap.AddObject(cup);
-
-        //CurrentMap
+        CurrentMap.AddObject(lemin);
 
         _triangleShader = Engine.AssetLoader.Get<ShaderAsset>("Shaders/HelloTriangle.xml");
 
@@ -223,6 +368,7 @@ public class TestScene2D : World2DBaseScene<Map2D>
         }
     }
 
+    public float rotation = 0.01f;
     public override void Draw(RenderComposer composer)
 	{
 		composer.SetUseViewMatrix(false);
@@ -231,39 +377,46 @@ public class TestScene2D : World2DBaseScene<Map2D>
         {
             composer.SetShader(_triangleShader.Shader);
 
-            uint vbo = Gl.GenBuffer();
+
             /*
             Vector3 a = new Vector3(1, 0, 0);
             Vector3 b = new Vector3(0, 1, 0);
             Vector3 c = new Vector3(-1, 0, 0);
             Vector3[] triangle = new Vector3[] { a, b, c };
             */
-
+            /*
+            #region Triangle
             Colored a = new Colored(Color.PrettyYellow, new Vector3(0.5f, -0.2f, 0));
             Colored b = new Colored(Color.PrettyBlue, new Vector3(0, 0.5f, 0));
             Colored c = new Colored(Color.PrettyRed, new Vector3(-0.5f, -0.2f, 0));
             Colored[] triangle = new Colored[] { a, b, c };
-
-            Gl.BindBuffer(BufferTarget.ArrayBuffer, vbo);
+            */
+            /*
             // sizeof(float)*3 -> the vectors; sizeof(byte)*4 -> Color 
             // sizeof(float)*3 + sizeof(byte)*4) -> one Colored object
             // sizeof(float)*3 + sizeof(byte)*4) * 3 -> the triangle array
             Gl.BufferData(BufferTarget.ArrayBuffer, (sizeof(float) * 3 + sizeof(byte) * 4) * 3, triangle, BufferUsage.StaticDraw);
+            */
 
-            uint vao = Gl.GenVertexArray();
-
+            Gl.BindBuffer(BufferTarget.ArrayBuffer, vbo);
             Gl.BindVertexArray(vao);
+            //Gl.DrawArrays(PrimitiveType.Triangles, 0, _triangle.Length);
 
-            Gl.EnableVertexAttribArray(0);
-            Gl.VertexAttribPointer(0, 4, VertexAttribType.UnsignedByte, true, sizeof(float) * 3 + sizeof(byte) * 4, 0);
 
-            Gl.EnableVertexAttribArray(1);
-            Gl.VertexAttribPointer(1, 3, VertexAttribType.Float, false, sizeof(float) * 3 + sizeof(byte) * 4, sizeof(byte) * 4);
 
-            Gl.DrawArrays(PrimitiveType.Triangles, 0, 3);
 
-            Gl.DeleteBuffers(vbo);
-            Gl.DeleteVertexArrays(vao);
+            //_triangleShader.Shader.SetUniformMatrix4("modelMatrix", Matrix4x4.CreateTranslation(0.4f, 0.0f, 0));
+            //_triangleShader.Shader.SetUniformMatrix4("modelMatrix", Matrix4x4.CreateTranslation(0.4f, 0.0f, 0));
+            //_triangleShader.Shader.SetUniformMatrix4("modelMatrix", Matrix4x4.CreateScale(1f, 0.5f, 1f));
+            _triangleShader.Shader.SetUniformMatrix4("modelMatrix", Matrix4x4.CreateRotationZ(rotation));
+
+
+            rotation = rotation + 0.01f;
+            Gl.DrawArrays(PrimitiveType.Triangles, 0, _triangle.Length);
+
+            // DELETING THE BUFFERS AT THE END OF THE FRAME
+
+
 
             composer.SetShader(null);
 
@@ -276,14 +429,16 @@ public class TestScene2D : World2DBaseScene<Map2D>
 		composer.ClearDepth();
 		composer.SetUseViewMatrix(true);
 
+        /*
 		//composer.RenderEllipse(Position, new Vector2(10, 15), Color.PrettyYellow, true);
-		lemin.Draw(composer);
+		//lemin.Draw(composer);
         //cup.Draw(composer);
-
+        
         foreach (var drop in lemonDrops)
         {
-            drop.Draw(composer);
+            drop.RenderInternal(composer);
         }
+        */
 
 		base.Draw(composer);
 	}
@@ -311,11 +466,11 @@ public class TestScene2D : World2DBaseScene<Map2D>
         }
 		*/
 
-		lemin.Update(lemonDrops);
+		//lemin.Update(lemonDrops);
         //cup.Update(lemonDrops);
         foreach (var drop in lemonDrops)
         {
-            drop.Update();
+            drop.Update(1f);
         }
 
         base.Update();
