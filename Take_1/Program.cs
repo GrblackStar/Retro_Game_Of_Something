@@ -10,7 +10,9 @@ using Emotion.Common;
 using Emotion.Common.Threading;
 using Emotion.Game.World2D;
 using Emotion.Game.World2D.SceneControl;
+using Emotion.Game.World3D.SceneControl;
 using Emotion.Graphics;
+using Emotion.Graphics.Camera;
 using Emotion.Graphics.Objects;
 using Emotion.Graphics.Shading;
 using Emotion.IO;
@@ -19,6 +21,7 @@ using Emotion.Testing;
 using Emotion.Utility;
 using Microsoft.VisualBasic.FileIO;
 using OpenGL;
+using Take_1;
 using WinApi.User32;
 
 #endregion
@@ -35,17 +38,22 @@ public class Program
 
         Engine.Setup(config);
 
-        Engine.SceneManager.SetScene(new TestScene2D());
+        Engine.SceneManager.SetScene(new TakeOneGame());
 
         Engine.Run();
     }
 }
 
 
-public class TestScene2D : World2DBaseScene<Map2D>
+public class TakeOneGame : World3DBaseScene<Take1Map>
 {
     public override async Task LoadAsync()
     {
+        var cam3D = new Camera3D(new Vector3(100));
+        cam3D.LookAtPoint(Vector3.Zero);
+        Engine.Renderer.Camera = cam3D;
+
+        await ChangeMapAsync(new Take1Map(new Vector2(10, 10)));
         //return Task.CompletedTask;
     }
 
