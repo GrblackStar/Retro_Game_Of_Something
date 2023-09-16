@@ -1,5 +1,6 @@
 ﻿#region Using
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -27,7 +28,8 @@ public class Program
 {
 	private static void Main(string[] args)
 	{
-		var config = new Configurator
+        //Silk.NET.Assimp.Assimp.GetApi();
+        var config = new Configurator
 		{
 			DebugMode = true
 		};
@@ -86,10 +88,6 @@ public class Lemon : GameObject2D
         composer.RenderEllipse(Position, Scale, color, true);
     }
 
-    public void Load()
-    {
-
-    }
 
 }
 
@@ -112,11 +110,6 @@ public class LemonDrop : GameObject2D
         composer.RenderEllipse(Position, Scale, color, true);
     }
 
-    public void Load()
-    {
-
-    }
-
 }
 
 
@@ -126,7 +119,6 @@ public class Cup : GameObject2D
     public float velosity = (10f / (1000 / 60f)) * Engine.DeltaTime;
 
     public Color color = Color.White;
-    public Vector2 Scale = new Vector2(10, 15);
 
     public TextureAsset textureAsset;
 
@@ -153,51 +145,22 @@ public class Cup : GameObject2D
             X = Position.X - velosity;
         }
 
+        List<LemonDrop> drops = new List<LemonDrop>();
+        Map.GetObjectsByType<LemonDrop>(drops, 0, Bounds);
 
-
-        //Map.GetObjects();
-        //Console.WriteLine(Map.GetObjects().Count());
-        //Map.GetObjectByType<LemonDrop>();
-        //Console.WriteLine(Map.GetObjectByType<LemonDrop>());
-        //lemonDrops.Add(Map.GetObjectByType<LemonDrop>());
-        //Console.WriteLine(Map.GetObjectsByType<LemonDrop>().Count());
-
-        for (int i = 0; i < Map.GetObjectsByType<LemonDrop>().Count(); i++)
+        foreach (var drop in drops)
         {
-            LemonDrop drop = Map.GetObjectsByType<LemonDrop>().ElementAt(i);
-            if (Math.Abs((drop.Position.Y + drop.Scale.Y) - this.Position.Y) <= 10)
-            {
                 dropsCount++;
                 Map.RemoveObject(drop);
-            }
         }
-
-
-        /*
-        for (int i = 0; i < lemonDrops.Count; i++)
-        {
-            LemonDrop drop = lemonDrops[i];
-            if (Math.Abs((drop.Position.Y + drop.Scale.Y) - this.Position.Y) <= 10)
-            {
-                dropsCount++;
-                lemonDrops.Remove(drop);
-                i--;
-            }
-        }
-        */
-
     }
 
     public override async Task LoadAssetsAsync()
     {
         textureAsset = await Engine.AssetLoader.GetAsync<TextureAsset>("a_cup.png");
-    }
-    public void Load()
-    {
-        
-    }
+        Size = textureAsset.Texture.Size;
 
-
+    }
     protected override void RenderInternal(RenderComposer composer)
     {
         Vector2 juiceSize = textureAsset.Texture.Size - new Vector2(20, 20);
@@ -208,25 +171,6 @@ public class Cup : GameObject2D
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -312,11 +256,9 @@ public class TestScene2D : World2DBaseScene<Map2D>
         // can directly initilize the riangles and than just to dram them in the Draw(), so they don't get calculated every frame
         cup = new Cup();
         cup.Position = new Vector3(50, 50, 0);
-        cup.Load();
 
 		lemin = new Lemon();
         lemin.Position = new Vector3(0, 0, 0);
-        lemin.Load();
 
         lemonDrops = new();
 
@@ -377,37 +319,9 @@ public class TestScene2D : World2DBaseScene<Map2D>
         {
             composer.SetShader(_triangleShader.Shader);
 
-
-            /*
-            Vector3 a = new Vector3(1, 0, 0);
-            Vector3 b = new Vector3(0, 1, 0);
-            Vector3 c = new Vector3(-1, 0, 0);
-            Vector3[] triangle = new Vector3[] { a, b, c };
-            */
-            /*
-            #region Triangle
-            Colored a = new Colored(Color.PrettyYellow, new Vector3(0.5f, -0.2f, 0));
-            Colored b = new Colored(Color.PrettyBlue, new Vector3(0, 0.5f, 0));
-            Colored c = new Colored(Color.PrettyRed, new Vector3(-0.5f, -0.2f, 0));
-            Colored[] triangle = new Colored[] { a, b, c };
-            */
-            /*
-            // sizeof(float)*3 -> the vectors; sizeof(byte)*4 -> Color 
-            // sizeof(float)*3 + sizeof(byte)*4) -> one Colored object
-            // sizeof(float)*3 + sizeof(byte)*4) * 3 -> the triangle array
-            Gl.BufferData(BufferTarget.ArrayBuffer, (sizeof(float) * 3 + sizeof(byte) * 4) * 3, triangle, BufferUsage.StaticDraw);
-            */
-
             Gl.BindBuffer(BufferTarget.ArrayBuffer, vbo);
             Gl.BindVertexArray(vao);
-            //Gl.DrawArrays(PrimitiveType.Triangles, 0, _triangle.Length);
 
-
-
-
-            //_triangleShader.Shader.SetUniformMatrix4("modelMatrix", Matrix4x4.CreateTranslation(0.4f, 0.0f, 0));
-            //_triangleShader.Shader.SetUniformMatrix4("modelMatrix", Matrix4x4.CreateTranslation(0.4f, 0.0f, 0));
-            //_triangleShader.Shader.SetUniformMatrix4("modelMatrix", Matrix4x4.CreateScale(1f, 0.5f, 1f));
             _triangleShader.Shader.SetUniformMatrix4("modelMatrix", Matrix4x4.CreateRotationZ(rotation));
 
 
@@ -415,8 +329,6 @@ public class TestScene2D : World2DBaseScene<Map2D>
             Gl.DrawArrays(PrimitiveType.Triangles, 0, _triangle.Length);
 
             // DELETING THE BUFFERS AT THE END OF THE FRAME
-
-
 
             composer.SetShader(null);
 
@@ -429,45 +341,11 @@ public class TestScene2D : World2DBaseScene<Map2D>
 		composer.ClearDepth();
 		composer.SetUseViewMatrix(true);
 
-        /*
-		//composer.RenderEllipse(Position, new Vector2(10, 15), Color.PrettyYellow, true);
-		//lemin.Draw(composer);
-        //cup.Draw(composer);
-        
-        foreach (var drop in lemonDrops)
-        {
-            drop.RenderInternal(composer);
-        }
-        */
-
 		base.Draw(composer);
 	}
 
     public override void Update()
     {
-		/*
-		float velosity = (10f / (1000 / 60f)) * Engine.DeltaTime;
-
-		if (Engine.Host.IsKeyHeld(Platform.Input.Key.W))
-		{
-			Position.Y = Position.Y - velosity;
-		}
-        if (Engine.Host.IsKeyHeld(Platform.Input.Key.S))
-        {
-            Position.Y = Position.Y + velosity;
-        }
-        if (Engine.Host.IsKeyHeld(Platform.Input.Key.D))
-        {
-			Position.X = Position.X + velosity;
-        }
-        if (Engine.Host.IsKeyHeld(Platform.Input.Key.A))
-        {
-            Position.X = Position.X - velosity;
-        }
-		*/
-
-		//lemin.Update(lemonDrops);
-        //cup.Update(lemonDrops);
         foreach (var drop in lemonDrops)
         {
             drop.Update(1f);
