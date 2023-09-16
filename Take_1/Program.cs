@@ -17,6 +17,7 @@ using Emotion.Graphics;
 using Emotion.Graphics.Camera;
 using Emotion.Graphics.Objects;
 using Emotion.Graphics.Shading;
+using Emotion.Graphics.ThreeDee;
 using Emotion.IO;
 using Emotion.Platform.Debugger;
 using Emotion.Primitives;
@@ -25,7 +26,6 @@ using Emotion.UI;
 using Emotion.Utility;
 using Microsoft.VisualBasic.FileIO;
 using OpenGL;
-using Silk.NET.Assimp;
 using Take_1;
 using WinApi.User32;
 
@@ -83,6 +83,21 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     public override void Update()
     {
+        if (Engine.Host.IsMouseKeyDown(Platform.Input.MouseKey.Left))
+        {
+            Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
+            Vector3 position = new Vector3(0, 0, 0);
+
+            foreach (var obj in CurrentMap.GetObjectsByType<GroundTile>())
+            {
+                if(ray3D.IntersectWithObject(obj, out Mesh _, out position, out Vector3 _, out int _))
+                {
+                    (CurrentMap as Take1Map).AddTreeObjects(position);
+                }
+                
+            }
+        }
+
         base.Update();
         UI.Update();
     }

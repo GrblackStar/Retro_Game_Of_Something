@@ -1,7 +1,14 @@
+
 ﻿using Emotion.Game.World3D;
 using Emotion.Graphics;
 using Emotion.Primitives;
 using Emotion.Utility;
+﻿using Emotion.Common;
+using Emotion.Game.World3D;
+using Emotion.Graphics.Camera;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 
 namespace Take_1
@@ -11,6 +18,13 @@ namespace Take_1
         public Take1Map(Vector2 mapSize)
         {
             MapSize = mapSize;
+        }
+
+        public void AddTreeObjects(Vector3 position)
+        {
+            TreeOak thisTreeObject = new TreeOak();
+            thisTreeObject.Position = position;
+            AddObject(thisTreeObject);
         }
 
         protected override Task InitAsyncInternal()
