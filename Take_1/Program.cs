@@ -20,6 +20,7 @@ using Emotion.Graphics.Shading;
 using Emotion.Graphics.ThreeDee;
 using Emotion.IO;
 using Emotion.Platform.Debugger;
+using Emotion.Platform.Input;
 using Emotion.Primitives;
 using Emotion.Testing;
 using Emotion.UI;
@@ -66,6 +67,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
         UI = new UIController();
         AddPlaceableObjectMenu(UI);
+
+        Engine.Host.OnKey.AddListener(KeyHandler, KeyListenerType.Game);
     }
 
     public override void Draw(RenderComposer composer)
@@ -81,23 +84,35 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         UI.Render(composer);
     }
 
-    public override void Update()
+    private bool KeyHandler(Key key, KeyStatus status)
     {
-        if (Engine.Host.IsMouseKeyDown(Platform.Input.MouseKey.Left))
+        if (key == Key.MouseKeyLeft && ObjectTypeToPlace != null)
         {
-            Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
-            Vector3 position = new Vector3(0, 0, 0);
-
-            foreach (var obj in CurrentMap.GetObjectsByType<GroundTile>())
+            if (status == KeyStatus.Down)
             {
-                if(ray3D.IntersectWithObject(obj, out Mesh _, out position, out Vector3 _, out int _))
+                Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
+                Vector3 position = new Vector3(0, 0, 0);
+
+                foreach (var obj in CurrentMap.GetObjectsByType<GroundTile>())
                 {
-                    (CurrentMap as Take1Map).AddTreeObjects(position);
+                    if (ray3D.IntersectWithObject(obj, out Mesh _, out position, out Vector3 _, out int _))
+                    {
+                        var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
+                        thisTreeObject.Position = position;
+                        CurrentMap.AddObject(thisTreeObject);
+                    }
+
                 }
-                
+                return false;
             }
         }
+        return true;
+    }
 
+
+    public override void Update()
+    {
+        
         base.Update();
         UI.Update();
     }

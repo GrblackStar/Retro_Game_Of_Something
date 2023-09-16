@@ -20,13 +20,6 @@ namespace Take_1
             MapSize = mapSize;
         }
 
-        public void AddTreeObjects(Vector3 position)
-        {
-            TreeOak thisTreeObject = new TreeOak();
-            thisTreeObject.Position = position;
-            AddObject(thisTreeObject);
-        }
-
         protected override Task InitAsyncInternal()
         {
             Vector2 groundTileBounds = new Vector2(100, 100);
