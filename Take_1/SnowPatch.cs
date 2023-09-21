@@ -12,8 +12,6 @@ namespace Take_1
         public SnowPatch()
         {
             EntityPath = "HolidayKit/snowPatch.fbx";
-            Size3D = new System.Numerics.Vector3(1, 1, 1);
-            RotationDeg = new System.Numerics.Vector3(90, 0, 0);
         }
     }
 }

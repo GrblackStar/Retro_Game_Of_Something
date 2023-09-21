@@ -77,7 +77,7 @@ namespace Take_1
                     snowPatch.Position = newPatchBound.Center.ToVec3(6);
                     snowPatch.Size3D *= Helpers.GenerateRandomNumber(1, 25) / 10f;
                     var rot = Helpers.GenerateRandomNumber(1, 360);
-                    snowPatch.RotationDeg = new Vector3(rot, 90, 90); // due to gimbal lock, correct would be Vector3(90, 0, rot)
+                    snowPatch.RotationDeg = new Vector3(0, 0, rot);
                     AddObject(snowPatch);
                     patchesPlacedAt.Add(newPatchBound);
                 }
