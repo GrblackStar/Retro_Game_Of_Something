@@ -22,6 +22,8 @@ namespace Take_1
 
         protected override Task InitAsyncInternal()
         {
+            RenderShadowMap = true;
+
             Vector2 groundTileBounds = new Vector2(100, 100);
 
             for (int y = 0; y < MapSize.Y; y++)

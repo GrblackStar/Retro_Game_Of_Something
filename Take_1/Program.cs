@@ -39,7 +39,7 @@ public class Program
     {
         var config = new Configurator
         {
-            DebugMode = true
+            DebugMode = true,
         };
 
         Engine.Setup(config);
@@ -93,8 +93,10 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
                 Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
                 Vector3 position = new Vector3(0, 0, 0);
 
-                foreach (var obj in CurrentMap.GetObjectsByType<GroundTile>())
+                var enumerator = CurrentMap.GetObjectsByType<GroundTile>();
+                while(enumerator.MoveNext())
                 {
+                    var obj = enumerator.Current;
                     if (ray3D.IntersectWithObject(obj, out Mesh _, out position, out Vector3 _, out int _))
                     {
                         var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
