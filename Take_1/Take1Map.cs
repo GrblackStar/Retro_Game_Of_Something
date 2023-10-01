@@ -4,7 +4,6 @@ using Emotion.Graphics;
 using Emotion.Primitives;
 using Emotion.Utility;
 ﻿using Emotion.Common;
-using Emotion.Game.World3D;
 using Emotion.Graphics.Camera;
 using System;
 using System.Collections.Generic;
@@ -20,6 +19,11 @@ namespace Take_1
             MapSize = mapSize;
         }
 
+        protected Take1Map()
+        {
+
+        }
+          
         protected override Task InitAsyncInternal()
         {
             RenderShadowMap = true;

@@ -144,7 +144,7 @@ public class Cup : GameObject2D
         {
             X = Position.X - velosity;
         }
-
+        
         List<LemonDrop> drops = new List<LemonDrop>();
         Map.GetObjectsByType<LemonDrop>(drops, 0, Bounds);
 
@@ -207,7 +207,7 @@ public class TestScene2D : World2DBaseScene<Map2D>
                new Colored(Color.PrettyYellow, new Vector3(-0.48f, 0.765f, 0)),
                new Colored(Color.PrettyBlue, new Vector3(-0.4f, 0.765f, 0)),
                new Colored(Color.PrettyRed, new Vector3(-0.4f, 0.785f, 0)),
-
+               
                new Colored(Color.PrettyYellow, new Vector3(-0.48f, 0.765f, 0)),
                new Colored(Color.PrettyBlue, new Vector3(-0.4f, 0.785f, 0)),
                new Colored(Color.PrettyRed, new Vector3(-0.48f, 0.785f, 0)),
@@ -242,7 +242,87 @@ public class TestScene2D : World2DBaseScene<Map2D>
 
                new Colored(Color.PrettyYellow, new Vector3(-0.28f, 0.6f, 0)),
                new Colored(Color.PrettyBlue, new Vector3(-0.2f, 0.62f, 0)),
-               new Colored(Color.PrettyRed, new Vector3(-0.28f, 0.62f, 0))
+               new Colored(Color.PrettyRed, new Vector3(-0.28f, 0.62f, 0)),
+               
+               new Colored(Color.PrettyYellow, new Vector3(-0.1f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.08f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.1f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.1f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(-0.08f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.08f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.08f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0f, 0.62f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(-0.08f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0f, 0.62f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(-0.08f, 0.62f, 0)),
+               
+               new Colored(Color.PrettyYellow, new Vector3(0.08f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.1f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.08f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.08f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.1f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.1f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.1f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.18f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.18f, 0.62f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.1f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.18f, 0.62f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.1f, 0.62f, 0)),
+               
+               new Colored(Color.PrettyYellow, new Vector3(0.26f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.28f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.26f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.26f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.28f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.28f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.26f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.28f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.26f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.26f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.28f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.28f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.28f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.36f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.36f, 0.62f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.28f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.36f, 0.62f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.28f, 0.62f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.28f, 0.93f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.36f, 0.93f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.36f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.28f, 0.93f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.36f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.28f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.36f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.38f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.36f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.36f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.38f, 0.6f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.38f, 0.95f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.48f, 0.6f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.5f, 0.66f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.46f, 0.66f, 0)),
+
+               new Colored(Color.PrettyYellow, new Vector3(0.48f, 0.67f, 0)),
+               new Colored(Color.PrettyBlue, new Vector3(0.5f, 0.95f, 0)),
+               new Colored(Color.PrettyRed, new Vector3(0.46f, 0.95f, 0))
 
                };
     uint vbo;
