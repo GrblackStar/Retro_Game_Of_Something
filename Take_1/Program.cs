@@ -57,6 +57,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     public Type ObjectTypeToPlace;
 
+    public GameObject3D CurrentObject;
+
     public override async Task LoadAsync()
     {
         var cam3D = new Camera3D(new Vector3(100));
@@ -111,12 +113,30 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         return true;
     }
 
+    private void changeObjectPosition(ref GameObject3D currentObject)
+    {
+        //currentObject.Position = Engine.Renderer.Camera.Position;  ------>>>>> moves with the camera
+        Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
+        Vector3 position = new Vector3(0, 0, 0);
+
+        var enumerator = CurrentMap.GetObjectsByType<GroundTile>();
+        while (enumerator.MoveNext())
+        {
+            var obj = enumerator.Current;
+            if (ray3D.IntersectWithObject(obj, out Mesh _, out position, out Vector3 _, out int _))
+            {
+                currentObject.Position = position;
+            }
+
+        }
+    }
+
 
     public override void Update()
     {
-        
         base.Update();
         UI.Update();
+        if (ObjectTypeToPlace != null) changeObjectPosition(ref CurrentObject);
     }
 
     protected void AddPlaceableObjectMenu(UIController ui)
@@ -163,6 +183,17 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             nuAs.Selected = true;
             ObjectTypeToPlace = nuAs.Type;
             oldSel = nuAs;
+
+            if (CurrentObject != null)
+            {
+                CurrentMap.RemoveObject(CurrentObject);
+            }
+
+            CurrentObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
+            CurrentObject.Tint = CurrentObject.Tint.SetAlpha(150);
+            CurrentMap.AddObject(CurrentObject);
+
+
         };
 
         ui.AddChild(barContainer);
