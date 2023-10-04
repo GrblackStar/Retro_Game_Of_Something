@@ -230,8 +230,12 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
             if (_previewImage == null && _previewObjectLoading.Status == TaskStatus.RanToCompletion)
             {
-                previewCamera = new Camera3D(new Vector3(100, 200, 100));
-                previewCamera.LookAtPoint(Vector3.Zero + new Vector3(0, 0, previewCamera.Z / 2f));
+                _previewObject.ObjectState = ObjectState.Alive;
+                _previewObject.Init();
+                var boundSphere = _previewObject.BoundingSphere;
+
+                previewCamera = new Camera3D(boundSphere.Origin + new Vector3(0, boundSphere.Radius * 2.5f, boundSphere.Radius));
+                previewCamera.LookAtPoint(boundSphere.Origin);
                 previewCamera.Update();
 
                 _previewImage = new FrameBuffer(new Vector2(64, 64)).WithColor();
