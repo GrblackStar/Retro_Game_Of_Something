@@ -57,7 +57,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     public Type ObjectTypeToPlace;
 
-    public GameObject3D CurrentObject;
+    public GameObject3D GhostObject;
 
     public override async Task LoadAsync()
     {
@@ -92,6 +92,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         {
             if (status == KeyStatus.Down)
             {
+                /*
                 Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
                 Vector3 position = new Vector3(0, 0, 0);
 
@@ -107,6 +108,11 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
                     }
 
                 }
+                */
+                var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
+                thisTreeObject.Position = GhostObject.Position;
+                CurrentMap.AddObject(thisTreeObject);
+
                 return false;
             }
         }
@@ -125,18 +131,22 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             var obj = enumerator.Current;
             if (ray3D.IntersectWithObject(obj, out Mesh _, out position, out Vector3 _, out int _))
             {
-                currentObject.Position = position;
+                //currentObject.Position = position;
+                currentObject.Position = CurrentMap.SnapToGrid(position);
             }
 
         }
     }
 
 
+
+
+
     public override void Update()
     {
         base.Update();
         UI.Update();
-        if (ObjectTypeToPlace != null) changeObjectPosition(ref CurrentObject);
+        if (ObjectTypeToPlace != null) changeObjectPosition(ref GhostObject);
     }
 
     protected void AddPlaceableObjectMenu(UIController ui)
@@ -184,14 +194,28 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             ObjectTypeToPlace = nuAs.Type;
             oldSel = nuAs;
 
-            if (CurrentObject != null)
+            if (GhostObject != null)
             {
-                CurrentMap.RemoveObject(CurrentObject);
+                CurrentMap.RemoveObject(GhostObject);
             }
 
-            CurrentObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
-            CurrentObject.Tint = CurrentObject.Tint.SetAlpha(150);
-            CurrentMap.AddObject(CurrentObject);
+            GhostObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
+           // GhostObject.Tint = Color.PrettyRed;
+            GhostObject.Tint = GhostObject.Tint.SetAlpha(150);
+
+            //var objectEntity = GhostObject.Entity;
+            //var meshes = objectEntity.Meshes;
+            //for (int i = 0; i < meshes.Length; i++)
+            //{
+            //    var mesh = meshes[i];
+            //    for (int v = 0; v < mesh.Vertices.Length; v++)
+            //    {
+            //        ref var vertex = ref mesh.Vertices[v];
+            //        vertex.Color = Color.PrettyRed.ToUint();
+            //    }
+            //}
+
+            CurrentMap.AddObject(GhostObject);
 
 
         };

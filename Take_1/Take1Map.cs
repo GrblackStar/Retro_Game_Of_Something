@@ -9,11 +9,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using Emotion.Game.World3D.Objects;
 
 namespace Take_1
 {
     public class Take1Map : Map3D
     {
+        public Vector2 TileGrid = new Vector2(25, 25);
+
+        public struct TileData
+        {
+            public bool IsOccupied;
+        }
+
+        public TileData[][] gridData;
+
+        private InfiniteGrid _gridObject;
+        private Vector2 _gridOffset;
+
         public Take1Map(Vector2 mapSize)
         {
             MapSize = mapSize;
@@ -23,11 +36,58 @@ namespace Take_1
         {
 
         }
+
+        private void ApplyObjectToGrid(GameObject3D gameObject3D)
+        {
+            visualized = false;
+            if (gameObject3D is GroundTile) return;
+            if (gameObject3D is InfiniteGrid) return;
+
+            // set the occupied 
+            Cube cube = gameObject3D.Bounds3D;
+            Rectangle rectangle = new Rectangle();
+            rectangle.Width = 2 * cube.HalfExtents.X;
+            rectangle.Height = 2 * cube.HalfExtents.Y;
+            rectangle.X = cube.Origin.X - cube.HalfExtents.X;
+            rectangle.Y = cube.Origin.Y - cube.HalfExtents.Y;
+
+            rectangle.SnapToGrid(TileGrid);
+
+            Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
+            Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
+            //position of current tile
+            var firstGrid = this.WorldToGrid(first);
+            //positin of the last tile
+            var lastGrid = this.WorldToGrid(second);
+
+            for (int x = (int)firstGrid.Y; x < (int)lastGrid.Y; x++)
+            {
+                for (int y = (int)firstGrid.X; y < (int)lastGrid.X; y++)
+                {
+                    if (x < 0 || x > gridData.Length - 1) continue;
+                    if (y < 0 || y > gridData[x].Length - 1) continue;
+
+                    
+                    gridData[x][y].IsOccupied = true;
+                }
+
+            }
+
+            // position; position.x + width; 
+
+
+        }
           
         protected override Task InitAsyncInternal()
         {
             RenderShadowMap = true;
 
+            _gridObject = new InfiniteGrid();
+            _gridObject.Z = 6;
+            _gridObject.TileSize = TileGrid.X;
+            _gridObject.Offset = TileGrid / 2f;
+            AddObject(_gridObject);
+            
             Vector2 groundTileBounds = new Vector2(100, 100);
 
             for (int y = 0; y < MapSize.Y; y++)
@@ -42,6 +102,23 @@ namespace Take_1
                 }
             }
 
+            Vector2 gridRatio = groundTileBounds / TileGrid;
+            int gridWidth = (int) (MapSize.X * gridRatio.X);
+            var gridHeight = (int)(MapSize.Y * gridRatio.Y);
+
+            gridData = new TileData[gridWidth][];
+            for (int x = 0; x < gridWidth; x++)
+            {
+                gridData[x] = new TileData[gridHeight];
+                for (int y = 0; y < gridHeight; y++)
+                {
+                    TileData tile = new TileData();
+                    tile.IsOccupied = false;
+
+                    gridData[x][y] = tile;
+                }
+            }
+
             var patchesToPlace = 60;
             var mapBounds = new Rectangle(
                 -groundTileBounds.X / 2f,
@@ -49,6 +126,12 @@ namespace Take_1
                 MapSize.X * groundTileBounds.X + groundTileBounds.X / 2f,
                 MapSize.Y * groundTileBounds.Y + groundTileBounds.Y / 2f
                );
+            _gridOffset = mapBounds.Position;
+
+            OnObjectAdded += (obj) =>
+            {
+                ApplyObjectToGrid(obj as GameObject3D);
+            };
 
             // Trash
             List<Rectangle> patchesPlacedAt = new List<Rectangle>();
@@ -96,9 +179,47 @@ namespace Take_1
             return base.InitAsyncInternal();
         }
 
+        // Transform one coordinate system to the other:
+        // Position of an object
+        public Vector2 WorldToGrid(Vector3 position)
+        {
+            position -= _gridOffset.ToVec3();
+            return new Vector2(position.X / TileGrid.X, position.Y / TileGrid.Y).Floor();
+        }
+
+        public Vector3 GridToWorld(Vector2 position)
+        {
+            return new Vector3(position.X * TileGrid.X + TileGrid.X / 2f, position.Y * TileGrid.Y + TileGrid.Y / 2f, 5) + _gridOffset.ToVec3();
+        }
+
+        // gets the position of the object
+        public Vector3 SnapToGrid(Vector3 position)
+        {
+            return GridToWorld(WorldToGrid(position));
+        }
+
+        bool visualized = false;
+
         public override void Render(RenderComposer c)
         {
             base.Render(c);
+
+            if(!visualized)
+            {
+                c.DbgClear();
+                for (int x = 0; x < gridData.Length; x++)
+                {
+                    var column = gridData[x];
+                    for (int y = 0; y < column.Length; y++)
+                    {
+                        Vector3 worldPos = GridToWorld(new Vector2(y, x));
+                        var data = gridData[x][y];
+                        c.DbgAddPoint(worldPos, 3f, data.IsOccupied ? Color.PrettyRed : Color.PrettyGreen);
+                    }
+                }
+                visualized = true;
+            }
+           
 
             //c.PushModelMatrix(Matrix4x4.CreateTranslation(0, 0, 10));
             //Vector2 groundTileBounds = new Vector2(100, 100);
