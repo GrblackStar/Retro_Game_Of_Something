@@ -92,23 +92,6 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         {
             if (status == KeyStatus.Down)
             {
-                /*
-                Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
-                Vector3 position = new Vector3(0, 0, 0);
-
-                var enumerator = CurrentMap.GetObjectsByType<GroundTile>();
-                while(enumerator.MoveNext())
-                {
-                    var obj = enumerator.Current;
-                    if (ray3D.IntersectWithObject(obj, out Mesh _, out position, out Vector3 _, out int _))
-                    {
-                        var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
-                        thisTreeObject.Position = position;
-                        CurrentMap.AddObject(thisTreeObject);
-                    }
-
-                }
-                */
                 var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
                 thisTreeObject.Position = GhostObject.Position;
                 CurrentMap.AddObject(thisTreeObject);
@@ -119,7 +102,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         return true;
     }
 
-    private void changeObjectPosition(ref GameObject3D currentObject)
+    private void UpdateGhost(GameObject3D ghost)
     {
         //currentObject.Position = Engine.Renderer.Camera.Position;  ------>>>>> moves with the camera
         Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
@@ -131,8 +114,16 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             var obj = enumerator.Current;
             if (ray3D.IntersectWithObject(obj, out Mesh _, out position, out Vector3 _, out int _))
             {
-                //currentObject.Position = position;
-                currentObject.Position = CurrentMap.SnapToGrid(position);
+                ghost.Position = CurrentMap.SnapToGrid(position);
+                if (CurrentMap.IsValidPosition(ghost))
+                {
+                    // change color
+                    ghost.Tint = Color.White.SetAlpha(150);
+                }
+                else
+                {
+                    ghost.Tint = Color.Red.SetAlpha(150);
+                }
             }
 
         }
@@ -146,7 +137,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
     {
         base.Update();
         UI.Update();
-        if (ObjectTypeToPlace != null) changeObjectPosition(ref GhostObject);
+        if (ObjectTypeToPlace != null) UpdateGhost(GhostObject);
     }
 
     protected void AddPlaceableObjectMenu(UIController ui)
@@ -200,21 +191,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             }
 
             GhostObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
-           // GhostObject.Tint = Color.PrettyRed;
             GhostObject.Tint = GhostObject.Tint.SetAlpha(150);
-
-            //var objectEntity = GhostObject.Entity;
-            //var meshes = objectEntity.Meshes;
-            //for (int i = 0; i < meshes.Length; i++)
-            //{
-            //    var mesh = meshes[i];
-            //    for (int v = 0; v < mesh.Vertices.Length; v++)
-            //    {
-            //        ref var vertex = ref mesh.Vertices[v];
-            //        vertex.Color = Color.PrettyRed.ToUint();
-            //    }
-            //}
-
             CurrentMap.AddObject(GhostObject);
 
 

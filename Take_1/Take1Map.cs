@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Emotion.Game.World3D.Objects;
+using Emotion.Game.World2D;
+using Emotion.ExecTest;
 
 namespace Take_1
 {
@@ -37,9 +39,9 @@ namespace Take_1
 
         }
 
-        private void ApplyObjectToGrid(GameObject3D gameObject3D)
+        public void ApplyObjectToGrid(GameObject3D gameObject3D)
         {
-            visualized = false;
+            
             if (gameObject3D is GroundTile) return;
             if (gameObject3D is InfiniteGrid) return;
 
@@ -55,14 +57,12 @@ namespace Take_1
 
             Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
             Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
-            //position of current tile
             var firstGrid = this.WorldToGrid(first);
-            //positin of the last tile
             var lastGrid = this.WorldToGrid(second);
 
-            for (int x = (int)firstGrid.Y; x < (int)lastGrid.Y; x++)
+            for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
             {
-                for (int y = (int)firstGrid.X; y < (int)lastGrid.X; y++)
+                for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
                 {
                     if (x < 0 || x > gridData.Length - 1) continue;
                     if (y < 0 || y > gridData[x].Length - 1) continue;
@@ -70,18 +70,51 @@ namespace Take_1
                     
                     gridData[x][y].IsOccupied = true;
                 }
+            }
+            visualized = false;
+        }
+
+        public bool IsValidPosition(GameObject3D gameObject)
+        {
+            //get the position of the object and see if every tile underneath it is free
+            Cube cube = gameObject.Bounds3D;
+            Rectangle rectangle = new Rectangle();
+            rectangle.Width = 2 * cube.HalfExtents.X;
+            rectangle.Height = 2 * cube.HalfExtents.Y;
+            rectangle.X = cube.Origin.X - cube.HalfExtents.X;
+            rectangle.Y = cube.Origin.Y - cube.HalfExtents.Y;
+
+            // now i have the rectangle of the base
+            rectangle.SnapToGrid(TileGrid);
+
+            Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
+            Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
+            var firstGrid = this.WorldToGrid(first);
+            var lastGrid = this.WorldToGrid(second);
+
+
+            for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
+            {
+                for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
+                {
+                    if (x < 0 || x > gridData.Length - 1) continue;
+                    if (y < 0 || y > gridData[x].Length - 1) continue;
+
+                    if (gridData[x][y].IsOccupied) return false;
+
+                }
 
             }
 
-            // position; position.x + width; 
 
-
+            return true;
         }
           
         protected override Task InitAsyncInternal()
         {
             RenderShadowMap = true;
 
+            // do not delete for now
             _gridObject = new InfiniteGrid();
             _gridObject.Z = 6;
             _gridObject.TileSize = TileGrid.X;
@@ -115,6 +148,7 @@ namespace Take_1
                     TileData tile = new TileData();
                     tile.IsOccupied = false;
 
+                    // x -> index of the column
                     gridData[x][y] = tile;
                 }
             }
@@ -128,10 +162,12 @@ namespace Take_1
                );
             _gridOffset = mapBounds.Position;
 
+            /*
             OnObjectAdded += (obj) =>
             {
                 ApplyObjectToGrid(obj as GameObject3D);
             };
+            */
 
             // Trash
             List<Rectangle> patchesPlacedAt = new List<Rectangle>();
@@ -212,7 +248,7 @@ namespace Take_1
                     var column = gridData[x];
                     for (int y = 0; y < column.Length; y++)
                     {
-                        Vector3 worldPos = GridToWorld(new Vector2(y, x));
+                        Vector3 worldPos = GridToWorld(new Vector2(x, y));
                         var data = gridData[x][y];
                         c.DbgAddPoint(worldPos, 3f, data.IsOccupied ? Color.PrettyRed : Color.PrettyGreen);
                     }
