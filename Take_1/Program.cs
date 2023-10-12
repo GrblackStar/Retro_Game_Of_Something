@@ -192,6 +192,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
             GhostObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
             GhostObject.Tint = GhostObject.Tint.SetAlpha(150);
+            GhostObject.ObjectFlags = ObjectFlags.Map3DDontThrowShadow;
             CurrentMap.AddObject(GhostObject);
 
 
