@@ -1,17 +1,12 @@
-﻿using Emotion.Game.World2D;
-using Emotion.Game.World3D;
+﻿using Emotion.Game.World3D;
 using Emotion.Graphics.Camera;
 using Emotion.Graphics.Objects;
 using Emotion.Graphics;
 using Emotion.Platform.Debugger;
 using Emotion.Primitives;
 using Emotion.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using Emotion.Game.World;
 
 namespace Take_1
 {

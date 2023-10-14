@@ -1,34 +1,19 @@
 ﻿#region Using
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Numerics;
-using System.Threading;
-using System.Threading.Tasks;
 using Emotion.Common;
-using Emotion.Common.Threading;
-using Emotion.Game.World2D;
+using Emotion.Game.World;
 using Emotion.Game.World2D.EditorHelpers;
-using Emotion.Game.World2D.SceneControl;
 using Emotion.Game.World3D;
 using Emotion.Game.World3D.SceneControl;
 using Emotion.Graphics;
 using Emotion.Graphics.Camera;
-using Emotion.Graphics.Objects;
-using Emotion.Graphics.Shading;
 using Emotion.Graphics.ThreeDee;
-using Emotion.IO;
-using Emotion.Platform.Debugger;
 using Emotion.Platform.Input;
 using Emotion.Primitives;
 using Emotion.Testing;
 using Emotion.UI;
-using Emotion.Utility;
-using Microsoft.VisualBasic.FileIO;
-using OpenGL;
 using Take_1;
-using WinApi.User32;
 
 #endregion
 namespace Emotion.ExecTest;
@@ -57,7 +42,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     public Type ObjectTypeToPlace;
 
-    public GameObject3D GhostObject;
+    public BaseTakeOneObject GhostObject;
 
     public override async Task LoadAsync()
     {
@@ -161,6 +146,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         var types = EditorUtility.GetTypesWhichInherit<GameObject3D>();
         for (int i = 0; i < types.Count; i++)
         {
+            if (types[i].GetType() == typeof(BaseTakeOneObject)) continue;
             var type = types[i];
             if (type.Assembly == typeof(Take1Map).Assembly)
             {
@@ -189,8 +175,9 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             {
                 CurrentMap.RemoveObject(GhostObject);
             }
-
-            GhostObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
+            
+            GhostObject = (BaseTakeOneObject)Activator.CreateInstance(ObjectTypeToPlace);
+            GhostObject.ShouldApplyToGrid = false;
             GhostObject.Tint = GhostObject.Tint.SetAlpha(150);
             GhostObject.ObjectFlags = ObjectFlags.Map3DDontThrowShadow;
             CurrentMap.AddObject(GhostObject);

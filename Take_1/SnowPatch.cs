@@ -1,16 +1,10 @@
-﻿using Emotion.Game.World3D.Objects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Take_1
+﻿namespace Take_1
 {
-    public class SnowPatch : GenericObject3D
+    public class SnowPatch : BaseTakeOneObject
     {
         public SnowPatch()
         {
+            this.ShouldApplyToGrid = true;
             EntityPath = "HolidayKit/snowPatch.fbx";
         }
     }
