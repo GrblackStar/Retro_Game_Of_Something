@@ -1,10 +1,13 @@
 ﻿#region Using
 
 using System.Numerics;
+using System.Runtime.InteropServices.JavaScript;
 using Emotion.Common;
 using Emotion.Game.World;
+using Emotion.Game.World2D;
 using Emotion.Game.World2D.EditorHelpers;
 using Emotion.Game.World3D;
+using Emotion.Game.World3D.Objects;
 using Emotion.Game.World3D.SceneControl;
 using Emotion.Graphics;
 using Emotion.Graphics.Camera;
@@ -44,6 +47,9 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     public BaseTakeOneObject GhostObject;
 
+    public Type QuadObjectsForType;
+    public List<Quad3D> QuadObjects;
+
     public override async Task LoadAsync()
     {
         var cam3D = new Camera3D(new Vector3(100));
@@ -56,6 +62,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         AddPlaceableObjectMenu(UI);
 
         Engine.Host.OnKey.AddListener(KeyHandler, KeyListenerType.Game);
+
+        QuadObjects = new List<Quad3D>();
     }
 
     public override void Draw(RenderComposer composer)
@@ -89,6 +97,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     private void UpdateGhost(GameObject3D ghost)
     {
+        if (CurrentMap.EditorMode) return;
+
         //currentObject.Position = Engine.Renderer.Camera.Position;  ------>>>>> moves with the camera
         Ray3D ray3D = (Engine.Renderer.Camera as Camera3D).GetCameraMouseRay();
         Vector3 position = new Vector3(0, 0, 0);
@@ -112,10 +122,101 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             }
 
         }
+        UpdatePlanesPosition(ghost);
     }
 
+    private void UpdatePlanesPosition(GameObject3D gameObject)
+    {
+        Cube cube = gameObject.Bounds3D;
+        Rectangle rectangle = new Rectangle();
+        rectangle.Width = 2 * cube.HalfExtents.X;
+        rectangle.Height = 2 * cube.HalfExtents.Y;
+        rectangle.X = cube.Origin.X - cube.HalfExtents.X;
+        rectangle.Y = cube.Origin.Y - cube.HalfExtents.Y;
 
+        rectangle.SnapToGrid(CurrentMap.TileGrid);
 
+        Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
+        Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
+
+        var firstGrid = CurrentMap.WorldToGrid(first);
+        var lastGrid = CurrentMap.WorldToGrid(second);
+
+        int i = 0;
+        for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
+        {
+            for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
+            {
+                if (QuadObjects.Count > 0)
+                {
+                    QuadObjects.ElementAt(i).Position = CurrentMap.GridToWorld(new Vector2(x, y));
+                    QuadObjects.ElementAt(i).Z = 5.1f;
+
+                    if (CurrentMap.IsValidPosition(QuadObjects.ElementAt(i)))
+                    {
+                        QuadObjects.ElementAt(i).Tint = Color.White.SetAlpha(80);
+                    }
+                    else
+                    {
+                        QuadObjects.ElementAt(i).Tint = Color.Red.SetAlpha(255);
+                    }
+
+                    i++;
+                }
+                    
+            }
+        }
+    }
+    
+    // check if the ghostObject is loded and it has bounds
+    public void UpdatePlanesForGhost()
+    {
+        var ghostObjectType = GhostObject?.GetType();
+        if (ghostObjectType != QuadObjectsForType && GhostObject.ObjectState == ObjectState.Alive)
+        {
+            QuadObjects?.Clear();
+            AddPlanesToList(GhostObject);
+            foreach (var item in QuadObjects)
+            {
+                CurrentMap.AddObject(item);
+            }
+            QuadObjectsForType = ghostObjectType;
+        }
+    }
+
+    public void AddPlanesToList(GameObject3D gameObject)
+    {
+        // get the position of the object
+        // create quads and put them in the list
+        Cube cube = gameObject.Bounds3D;
+        Rectangle rectangle = new Rectangle();
+        rectangle.Width = 2 * cube.HalfExtents.X;
+        rectangle.Height = 2 * cube.HalfExtents.Y;
+        rectangle.X = cube.Origin.X - cube.HalfExtents.X;
+        rectangle.Y = cube.Origin.Y - cube.HalfExtents.Y;
+
+        rectangle.SnapToGrid(CurrentMap.TileGrid);
+
+        Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
+        Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
+        
+        var firstGrid = CurrentMap.WorldToGrid(first);
+        var lastGrid = CurrentMap.WorldToGrid (second);
+
+        for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
+        {
+            for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
+            {
+                Quad3D quadPiece = new Quad3D();
+                quadPiece.Width = 25;
+                quadPiece.Depth = 25;
+                quadPiece.Position = CurrentMap.GridToWorld(new Vector2(x, y));
+                quadPiece.Z = 5.1f;
+
+                QuadObjects.Add(quadPiece);
+            }
+        }
+    }
 
 
     public override void Update()
@@ -123,6 +224,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         base.Update();
         UI.Update();
         if (ObjectTypeToPlace != null) UpdateGhost(GhostObject);
+        UpdatePlanesForGhost();
     }
 
     protected void AddPlaceableObjectMenu(UIController ui)
@@ -174,6 +276,11 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             if (GhostObject != null)
             {
                 CurrentMap.RemoveObject(GhostObject);
+                foreach(var item in QuadObjects)
+                {
+                    CurrentMap.RemoveObject(item);
+                }
+                QuadObjects.Clear();
             }
             
             GhostObject = (BaseTakeOneObject)Activator.CreateInstance(ObjectTypeToPlace);
@@ -181,8 +288,6 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             GhostObject.Tint = GhostObject.Tint.SetAlpha(150);
             GhostObject.ObjectFlags = ObjectFlags.Map3DDontThrowShadow;
             CurrentMap.AddObject(GhostObject);
-
-
         };
 
         ui.AddChild(barContainer);

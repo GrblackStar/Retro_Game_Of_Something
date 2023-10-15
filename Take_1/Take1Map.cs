@@ -12,6 +12,7 @@ using System.Numerics;
 using Emotion.Game.World3D.Objects;
 using Emotion.Game.World2D;
 using Emotion.ExecTest;
+using Emotion.Common.Serialization;
 
 namespace Take_1
 {
@@ -39,6 +40,7 @@ namespace Take_1
 
         }
 
+        // after plasing them (before addtomap), where it's initializing the object, it sets the tiles under it as occupied
         public void ApplyObjectToGrid(GameObject3D gameObject3D)
         {
             
