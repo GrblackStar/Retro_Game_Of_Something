@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<GameDataObject type="Take_1.Data.ResourceGameData">
+  <Name>Money</Name>
+  <Id>Money</Id>
+  <AssetPath>Data/ResourceGameData/Money.xml</AssetPath>
+</GameDataObject>

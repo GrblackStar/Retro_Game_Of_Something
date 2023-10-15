@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<GameDataObject type="Take_1.Data.NeedGameData">
+  <Name>Hot Chocolate</Name>
+  <Id>Chocolate</Id>
+  <AssetPath>Data/NeedGameData/Chocolate.xml</AssetPath>
+</GameDataObject>

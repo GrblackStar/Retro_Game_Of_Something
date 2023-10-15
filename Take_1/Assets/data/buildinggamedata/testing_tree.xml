@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<GameDataObject type="Take_1.Data.BuildingGameData">
+  <ObjectClass>TreeOak</ObjectClass>
+  <Provides>
+    <String>HolidayCheer</String>
+  </Provides>
+  <Id>TESTING_Tree</Id>
+  <AssetPath>data/buildinggamedata/testing_tree.xml</AssetPath>
+</GameDataObject>

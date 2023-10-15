@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<GameDataObject type="Take_1.Data.BuildingGameData">
+  <Id>PretzelShop</Id>
+  <AssetPath>Data/BuildingGameData/PretzelShop.xml</AssetPath>
+</GameDataObject>
