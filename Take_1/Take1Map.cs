@@ -40,15 +40,9 @@ namespace Take_1
 
         }
 
-        // after plasing them (before addtomap), where it's initializing the object, it sets the tiles under it as occupied
-        public void ApplyObjectToGrid(GameObject3D gameObject3D)
+        public Rectangle CalcBoundingRectangle(GameObject3D gameObject)
         {
-            
-            if (gameObject3D is GroundTile) return;
-            if (gameObject3D is InfiniteGrid) return;
-
-            // set the occupied 
-            Cube cube = gameObject3D.Bounds3D;
+            Cube cube = gameObject.Bounds3D;
             Rectangle rectangle = new Rectangle();
             rectangle.Width = 2 * cube.HalfExtents.X;
             rectangle.Height = 2 * cube.HalfExtents.Y;
@@ -59,9 +53,26 @@ namespace Take_1
 
             Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
             Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
-            var firstGrid = this.WorldToGrid(first);
-            var lastGrid = this.WorldToGrid(second);
 
+            return new Rectangle
+            {
+                Position = new Vector2(first.X, first.Y),
+                Size = new Vector2(second.X - first.X, second.Y - first.Y)
+            };
+        }
+
+        // after plasing them (before addtomap), where it's initializing the object, it sets the tiles under it as occupied
+        public void ApplyObjectToGrid(GameObject3D gameObject3D)
+        {
+            if (gameObject3D is GroundTile) return;
+            if (gameObject3D is InfiniteGrid) return;
+
+            Rectangle rectangle = CalcBoundingRectangle(gameObject3D);
+
+            var firstGrid = WorldToGrid(new Vector3(rectangle.Position.X, rectangle.Position.Y, 5));
+            var lastGrid = WorldToGrid(new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5));
+
+            // set the occupied
             for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
             {
                 for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
@@ -76,24 +87,13 @@ namespace Take_1
             visualized = false;
         }
 
-        public bool IsValidPosition(GameObject3D gameObject)
+        public bool IsValidPosition(GameObject3D gameObject3D)
         {
             //get the position of the object and see if every tile underneath it is free
-            Cube cube = gameObject.Bounds3D;
-            Rectangle rectangle = new Rectangle();
-            rectangle.Width = 2 * cube.HalfExtents.X;
-            rectangle.Height = 2 * cube.HalfExtents.Y;
-            rectangle.X = cube.Origin.X - cube.HalfExtents.X;
-            rectangle.Y = cube.Origin.Y - cube.HalfExtents.Y;
+            Rectangle rectangle = CalcBoundingRectangle(gameObject3D);
 
-            // now i have the rectangle of the base
-            rectangle.SnapToGrid(TileGrid);
-
-            Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
-            Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
-            var firstGrid = this.WorldToGrid(first);
-            var lastGrid = this.WorldToGrid(second);
-
+            var firstGrid = WorldToGrid(new Vector3(rectangle.Position.X, rectangle.Position.Y, 5));
+            var lastGrid = WorldToGrid(new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5));
 
             for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
             {

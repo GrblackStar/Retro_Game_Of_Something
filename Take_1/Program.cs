@@ -127,20 +127,10 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     private void UpdatePlanesPosition(GameObject3D gameObject)
     {
-        Cube cube = gameObject.Bounds3D;
-        Rectangle rectangle = new Rectangle();
-        rectangle.Width = 2 * cube.HalfExtents.X;
-        rectangle.Height = 2 * cube.HalfExtents.Y;
-        rectangle.X = cube.Origin.X - cube.HalfExtents.X;
-        rectangle.Y = cube.Origin.Y - cube.HalfExtents.Y;
+        Rectangle rectangle = CurrentMap.CalcBoundingRectangle(gameObject);
 
-        rectangle.SnapToGrid(CurrentMap.TileGrid);
-
-        Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
-        Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
-
-        var firstGrid = CurrentMap.WorldToGrid(first);
-        var lastGrid = CurrentMap.WorldToGrid(second);
+        var firstGrid = CurrentMap.WorldToGrid(new Vector3(rectangle.Position.X, rectangle.Position.Y, 5));
+        var lastGrid = CurrentMap.WorldToGrid(new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5));
 
         int i = 0;
         for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
@@ -163,7 +153,6 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
                     i++;
                 }
-                    
             }
         }
     }
@@ -186,22 +175,10 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     public void AddPlanesToList(GameObject3D gameObject)
     {
-        // get the position of the object
-        // create quads and put them in the list
-        Cube cube = gameObject.Bounds3D;
-        Rectangle rectangle = new Rectangle();
-        rectangle.Width = 2 * cube.HalfExtents.X;
-        rectangle.Height = 2 * cube.HalfExtents.Y;
-        rectangle.X = cube.Origin.X - cube.HalfExtents.X;
-        rectangle.Y = cube.Origin.Y - cube.HalfExtents.Y;
+        Rectangle rectangle = CurrentMap.CalcBoundingRectangle(gameObject);
 
-        rectangle.SnapToGrid(CurrentMap.TileGrid);
-
-        Vector3 first = new Vector3(rectangle.Position.X, rectangle.Position.Y, 5);
-        Vector3 second = new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5);
-        
-        var firstGrid = CurrentMap.WorldToGrid(first);
-        var lastGrid = CurrentMap.WorldToGrid (second);
+        var firstGrid = CurrentMap.WorldToGrid(new Vector3(rectangle.Position.X, rectangle.Position.Y, 5));
+        var lastGrid = CurrentMap.WorldToGrid(new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5));
 
         for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
         {
