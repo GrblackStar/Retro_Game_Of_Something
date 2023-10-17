@@ -43,7 +43,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 {
     public UIController UI;
 
-    public Type ObjectTypeToPlace;
+    public Type? ObjectTypeToPlace;
 
     public BaseTakeOneObject GhostObject;
 
@@ -81,6 +81,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     private bool KeyHandler(Key key, KeyStatus status)
     {
+        if (GhostObject != null && !GhostObject.CanPlaceObject) return true;
+
         if (key == Key.MouseKeyLeft && ObjectTypeToPlace != null)
         {
             if (status == KeyStatus.Down)
@@ -88,6 +90,15 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
                 var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
                 thisTreeObject.Position = GhostObject.Position;
                 CurrentMap.AddObject(thisTreeObject);
+
+                ObjectTypeToPlace = null;
+
+                CurrentMap.RemoveObject(GhostObject);
+                foreach (var item in QuadObjects)
+                {
+                    CurrentMap.RemoveObject(item);
+                }
+                QuadObjects.Clear();
 
                 return false;
             }
@@ -114,10 +125,12 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
                 {
                     // change color
                     ghost.Tint = Color.White.SetAlpha(150);
+                    GhostObject.CanPlaceObject = true;
                 }
                 else
                 {
                     ghost.Tint = Color.Red.SetAlpha(150);
+                    GhostObject.CanPlaceObject = false;
                 }
             }
 
@@ -202,6 +215,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         UI.Update();
         if (ObjectTypeToPlace != null) UpdateGhost(GhostObject);
         UpdatePlanesForGhost();
+
+        // if we have a ghost object, initialise the Quad3Ds. find it in the currentmap
     }
 
     protected void AddPlaceableObjectMenu(UIController ui)

@@ -61,7 +61,7 @@ namespace Take_1
             };
         }
 
-        // after plasing them (before addtomap), where it's initializing the object, it sets the tiles under it as occupied
+        // after placing them (before addtomap), where it's initializing the object, it sets the tiles under it as occupied
         public void ApplyObjectToGrid(GameObject3D gameObject3D)
         {
             if (gameObject3D is GroundTile) return;

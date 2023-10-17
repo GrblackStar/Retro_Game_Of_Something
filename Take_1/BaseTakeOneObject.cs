@@ -5,6 +5,7 @@ namespace Take_1
     public class BaseTakeOneObject : GenericObject3D
     {
         public bool ShouldApplyToGrid = false;
+        public bool CanPlaceObject = true;
 
         public BaseTakeOneObject() { }
 
