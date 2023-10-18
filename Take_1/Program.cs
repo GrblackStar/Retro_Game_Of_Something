@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System.Numerics;
+using Emotion.Audio;
 using Emotion.Common;
 using Emotion.Editor.EditorWindows.DataEditorUtil;
 using Emotion.Game.World;
@@ -12,6 +13,7 @@ using Emotion.Game.World3D.SceneControl;
 using Emotion.Graphics;
 using Emotion.Graphics.Camera;
 using Emotion.Graphics.ThreeDee;
+using Emotion.IO;
 using Emotion.Platform.Input;
 using Emotion.Primitives;
 using Emotion.Standard.XML;
@@ -30,6 +32,7 @@ public class Program
         var config = new Configurator
         {
             DebugMode = true,
+            MasterVolume = 0f
         };
 
         Engine.Setup(config);
@@ -51,6 +54,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     public override async Task LoadAsync()
     {
+        Engine.Audio.CreateLayer("FX");
+
         var cam3D = new Camera3D(new Vector3(100));
         cam3D.LookAtPoint(Vector3.Zero);
         Engine.Renderer.Camera = cam3D;
@@ -80,27 +85,36 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     private bool KeyHandler(Key key, KeyStatus status)
     {
-        if (GhostObject != null && !GhostObject.CanPlaceObject) return true;
-
-        if (key == Key.MouseKeyLeft && ObjectTypeToPlace != null)
+        if (key == Key.MouseKeyLeft && ObjectTypeToPlace != null && status == KeyStatus.Up)
         {
-            if (status == KeyStatus.Down)
+            var fxLayer = Engine.Audio.GetLayer("FX");
+
+            if (GhostObject != null && !GhostObject.CanPlaceObject)
             {
-                var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
-                thisTreeObject.Position = GhostObject.Position;
-                CurrentMap.AddObject(thisTreeObject);
-
-                ObjectTypeToPlace = null;
-                QuadObjectsForType = null;
-                RemovePlanesAndGhost();
-
-                var buildingBarUI = UI.GetWindowById("BuildingsBar") as UICallbackListNavigator;
-                buildingBarUI.ResetSelection(true);
-                buildingBarUI.OnChoiceConfirmed?.Invoke(null, -1);
+                var cantPlaceAudio = Engine.AssetLoader.Get<AudioAsset>("sound_fx/197566__username12125__nuh-uh.wav");
+                fxLayer.QuickPlay(cantPlaceAudio);
 
                 return false;
             }
+
+            var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
+            thisTreeObject.Position = GhostObject.Position;
+            CurrentMap.AddObject(thisTreeObject);
+
+            ObjectTypeToPlace = null;
+            QuadObjectsForType = null;
+            RemovePlanesAndGhost();
+
+            var buildingBarUI = UI.GetWindowById("BuildingsBar") as UICallbackListNavigator;
+            buildingBarUI.ResetSelection(true);
+            buildingBarUI.OnChoiceConfirmed?.Invoke(null, -1);
+
+            var placeAudio = Engine.AssetLoader.Get<AudioAsset>("sound_fx/390355__josethehedgehog__deslizamiento-bajo-tronco.wav");
+            fxLayer.QuickPlay(placeAudio);
+
+            return false;
         }
+
         return true;
     }
 
