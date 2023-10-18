@@ -1,7 +1,6 @@
 ﻿#region Using
 
 using System.Numerics;
-using System.Runtime.InteropServices.JavaScript;
 using Emotion.Common;
 using Emotion.Game.World;
 using Emotion.Game.World2D;
@@ -41,14 +40,11 @@ public class Program
 
 public class TakeOneGame : World3DBaseScene<Take1Map>
 {
-    public UIController UI;
-
+    public UIController? UI;
     public Type? ObjectTypeToPlace;
-
-    public BaseTakeOneObject GhostObject;
-
-    public Type QuadObjectsForType;
-    public List<Quad3D> QuadObjects;
+    public BaseTakeOneObject? GhostObject;
+    public Type? QuadObjectsForType;
+    public List<Quad3D>? QuadObjects;
 
     public override async Task LoadAsync()
     {
@@ -59,7 +55,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         await ChangeMapAsync(new Take1Map(new Vector2(10, 10)));
 
         UI = new UIController();
-        AddPlaceableObjectMenu(UI);
+        AddPlaceableObjectMenu();
 
         Engine.Host.OnKey.AddListener(KeyHandler, KeyListenerType.Game);
 
@@ -92,13 +88,12 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
                 CurrentMap.AddObject(thisTreeObject);
 
                 ObjectTypeToPlace = null;
+                QuadObjectsForType = null;
+                RemovePlanesAndGhost();
 
-                CurrentMap.RemoveObject(GhostObject);
-                foreach (var item in QuadObjects)
-                {
-                    CurrentMap.RemoveObject(item);
-                }
-                QuadObjects.Clear();
+                var buildingBarUI = UI.GetWindowById("BuildingsBar") as UICallbackListNavigator;
+                buildingBarUI.ResetSelection(true);
+                buildingBarUI.OnChoiceConfirmed?.Invoke(null, -1);
 
                 return false;
             }
@@ -140,34 +135,22 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     private void UpdatePlanesPosition(GameObject3D gameObject)
     {
-        Rectangle rectangle = CurrentMap.CalcBoundingRectangle(gameObject);
-
-        var firstGrid = CurrentMap.WorldToGrid(new Vector3(rectangle.Position.X, rectangle.Position.Y, 5));
-        var lastGrid = CurrentMap.WorldToGrid(new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5));
+        if (QuadObjects.Count == 0) return;
 
         int i = 0;
-        for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
+        CurrentMap.ProcessGridTiles(gameObject, (x, y) =>
         {
-            for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
-            {
-                if (QuadObjects.Count > 0)
-                {
-                    QuadObjects.ElementAt(i).Position = CurrentMap.GridToWorld(new Vector2(x, y));
-                    QuadObjects.ElementAt(i).Z = 5.1f;
+            var myquad = QuadObjects[i];
+            myquad.Position = CurrentMap.GridToWorld(new Vector2(x, y));
+            myquad.Z = 5.1f;
 
-                    if (CurrentMap.IsValidPosition(QuadObjects.ElementAt(i)))
-                    {
-                        QuadObjects.ElementAt(i).Tint = Color.White.SetAlpha(80);
-                    }
-                    else
-                    {
-                        QuadObjects.ElementAt(i).Tint = Color.Red.SetAlpha(255);
-                    }
+            if (CurrentMap.IsValidPosition(myquad))
+                myquad.Tint = Color.White.SetAlpha(80);
+            else
+                myquad.Tint = Color.Red.SetAlpha(255);
 
-                    i++;
-                }
-            }
-        }
+            i++;
+        }, false);
     }
     
     // check if the ghostObject is loded and it has bounds
@@ -188,26 +171,26 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     public void AddPlanesToList(GameObject3D gameObject)
     {
-        Rectangle rectangle = CurrentMap.CalcBoundingRectangle(gameObject);
-
-        var firstGrid = CurrentMap.WorldToGrid(new Vector3(rectangle.Position.X, rectangle.Position.Y, 5));
-        var lastGrid = CurrentMap.WorldToGrid(new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5));
-
-        for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
+        CurrentMap.ProcessGridTiles(gameObject, (x, y) =>
         {
-            for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
-            {
-                Quad3D quadPiece = new Quad3D();
-                quadPiece.Width = 25;
-                quadPiece.Depth = 25;
-                quadPiece.Position = CurrentMap.GridToWorld(new Vector2(x, y));
-                quadPiece.Z = 5.1f;
+            Quad3D quadPiece = new Quad3D();
+            quadPiece.Width = 25;
+            quadPiece.Depth = 25;
+            quadPiece.Position = CurrentMap.GridToWorld(new Vector2(x, y));
+            quadPiece.Z = 5.1f;
 
-                QuadObjects.Add(quadPiece);
-            }
-        }
+            QuadObjects.Add(quadPiece);
+        });
     }
-
+    public void RemovePlanesAndGhost()
+    {
+        CurrentMap.RemoveObject(GhostObject);
+        foreach (var item in QuadObjects)
+        {
+            CurrentMap.RemoveObject(item);
+        }
+        QuadObjects.Clear();
+    }
 
     public override void Update()
     {
@@ -219,7 +202,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         // if we have a ghost object, initialise the Quad3Ds. find it in the currentmap
     }
 
-    protected void AddPlaceableObjectMenu(UIController ui)
+    protected void AddPlaceableObjectMenu()
     {
         UISolidColor barContainer = new UISolidColor();
         barContainer.StretchX = true;
@@ -235,6 +218,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         bar.StretchY = true;
         bar.IgnoreParentColor = true;
         bar.LayoutMode = LayoutMode.HorizontalList;
+        bar.Id = "BuildingsBar";
         barContainer.AddChild(bar);
 
         var types = EditorUtility.GetTypesWhichInherit<GameObject3D>();
@@ -259,29 +243,21 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             if (oldSel != null) oldSel.Selected = false;
 
             var nuAs = nu as UIObject3DWindow;
-            Assert.NotNull(nuAs);
+            if (nuAs == null) return;
 
             nuAs.Selected = true;
             ObjectTypeToPlace = nuAs.Type;
             oldSel = nuAs;
 
-            if (GhostObject != null)
-            {
-                CurrentMap.RemoveObject(GhostObject);
-                foreach(var item in QuadObjects)
-                {
-                    CurrentMap.RemoveObject(item);
-                }
-                QuadObjects.Clear();
-            }
+            if (GhostObject != null) RemovePlanesAndGhost();
             
-            GhostObject = (BaseTakeOneObject)Activator.CreateInstance(ObjectTypeToPlace);
+            GhostObject = Activator.CreateInstance(ObjectTypeToPlace) as BaseTakeOneObject;
             GhostObject.ShouldApplyToGrid = false;
             GhostObject.Tint = GhostObject.Tint.SetAlpha(150);
             GhostObject.ObjectFlags = ObjectFlags.Map3DDontThrowShadow;
             CurrentMap.AddObject(GhostObject);
         };
 
-        ui.AddChild(barContainer);
+        UI.AddChild(barContainer);
     }
 }

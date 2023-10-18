@@ -61,57 +61,51 @@ namespace Take_1
             };
         }
 
-        // after placing them (before addtomap), where it's initializing the object, it sets the tiles under it as occupied
-        public void ApplyObjectToGrid(GameObject3D gameObject3D)
+        public void ProcessGridTiles(GameObject3D gameObject, Action<int, int> action, bool clamped = true)
         {
-            if (gameObject3D is GroundTile) return;
-            if (gameObject3D is InfiniteGrid) return;
-
-            Rectangle rectangle = CalcBoundingRectangle(gameObject3D);
+            Rectangle rectangle = CalcBoundingRectangle(gameObject);
 
             var firstGrid = WorldToGrid(new Vector3(rectangle.Position.X, rectangle.Position.Y, 5));
             var lastGrid = WorldToGrid(new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5));
 
-            // set the occupied
             for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
             {
                 for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
                 {
-                    if (x < 0 || x > gridData.Length - 1) continue;
-                    if (y < 0 || y > gridData[x].Length - 1) continue;
+                    if (clamped)
+                    {
+                        if (x < 0 || x > gridData.Length - 1) continue;
+                        if (y < 0 || y > gridData[x].Length - 1) continue;
+                    }
 
-                    
-                    gridData[x][y].IsOccupied = true;
+                    action(x, y);
                 }
             }
+        }
+
+        // after placing them (before addtomap), where it's initializing the object, it sets the tiles under it as occupied
+        public void ApplyObjectToGrid(GameObject3D gameObject3D)
+        {
+            ProcessGridTiles(gameObject3D, (x, y) =>
+            {
+                gridData[x][y].IsOccupied = true;
+            });
             visualized = false;
         }
 
         public bool IsValidPosition(GameObject3D gameObject3D)
         {
             //get the position of the object and see if every tile underneath it is free
-            Rectangle rectangle = CalcBoundingRectangle(gameObject3D);
+            bool isValid = true;
 
-            var firstGrid = WorldToGrid(new Vector3(rectangle.Position.X, rectangle.Position.Y, 5));
-            var lastGrid = WorldToGrid(new Vector3(rectangle.Size.X + rectangle.Position.X, rectangle.Size.Y + rectangle.Position.Y, 5));
-
-            for (int x = (int)firstGrid.X; x < (int)lastGrid.X; x++)
+            ProcessGridTiles(gameObject3D, (x, y) =>
             {
-                for (int y = (int)firstGrid.Y; y < (int)lastGrid.Y; y++)
-                {
-                    if (x < 0 || x > gridData.Length - 1) continue;
-                    if (y < 0 || y > gridData[x].Length - 1) continue;
+                if (gridData[x][y].IsOccupied) isValid = false;
+            });
 
-                    if (gridData[x][y].IsOccupied) return false;
-
-                }
-
-            }
-
-
-            return true;
+            return isValid;
         }
-          
+
         protected override Task InitAsyncInternal()
         {
             RenderShadowMap = true;

@@ -4,7 +4,7 @@
     {
         public GroundTile()
         {
-            this.ShouldApplyToGrid = true;
+            this.ShouldApplyToGrid = false;
             EntityPath = "NatureKit/ground_grass.fbx";
             Size3D = new System.Numerics.Vector3(10, 10, 10);
         }
