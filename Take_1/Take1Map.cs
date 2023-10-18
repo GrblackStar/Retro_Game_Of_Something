@@ -115,7 +115,7 @@ namespace Take_1
             _gridObject.Z = 6;
             _gridObject.TileSize = TileGrid.X;
             _gridObject.Offset = TileGrid / 2f;
-            AddObject(_gridObject);
+            //AddObject(_gridObject);
             
             Vector2 groundTileBounds = new Vector2(100, 100);
 
@@ -238,17 +238,17 @@ namespace Take_1
 
             if(!visualized)
             {
-                c.DbgClear();
-                for (int x = 0; x < gridData.Length; x++)
-                {
-                    var column = gridData[x];
-                    for (int y = 0; y < column.Length; y++)
-                    {
-                        Vector3 worldPos = GridToWorld(new Vector2(x, y));
-                        var data = gridData[x][y];
-                        c.DbgAddPoint(worldPos, 3f, data.IsOccupied ? Color.PrettyRed : Color.PrettyGreen);
-                    }
-                }
+                //c.DbgClear();
+                //for (int x = 0; x < gridData.Length; x++)
+                //{
+                //    var column = gridData[x];
+                //    for (int y = 0; y < column.Length; y++)
+                //    {
+                //        Vector3 worldPos = GridToWorld(new Vector2(x, y));
+                //        var data = gridData[x][y];
+                //        c.DbgAddPoint(worldPos, 3f, data.IsOccupied ? Color.PrettyRed : Color.PrettyGreen);
+                //    }
+                //}
                 visualized = true;
             }
            

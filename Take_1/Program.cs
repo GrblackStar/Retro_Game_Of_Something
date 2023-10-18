@@ -2,6 +2,7 @@
 
 using System.Numerics;
 using Emotion.Common;
+using Emotion.Editor.EditorWindows.DataEditorUtil;
 using Emotion.Game.World;
 using Emotion.Game.World2D;
 using Emotion.Game.World2D.EditorHelpers;
@@ -13,9 +14,11 @@ using Emotion.Graphics.Camera;
 using Emotion.Graphics.ThreeDee;
 using Emotion.Platform.Input;
 using Emotion.Primitives;
+using Emotion.Standard.XML;
 using Emotion.Testing;
 using Emotion.UI;
 using Take_1;
+using Take_1.Data;
 
 #endregion
 namespace Emotion.ExecTest;
@@ -124,7 +127,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
                 }
                 else
                 {
-                    ghost.Tint = Color.Red.SetAlpha(150);
+                    ghost.Tint = Color.Red.SetAlpha(255);
                     GhostObject.CanPlaceObject = false;
                 }
             }
@@ -145,9 +148,9 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             myquad.Z = 5.1f;
 
             if (CurrentMap.IsValidPosition(myquad))
-                myquad.Tint = Color.White.SetAlpha(80);
+                myquad.Tint = Color.PrettyBlue;
             else
-                myquad.Tint = Color.Red.SetAlpha(255);
+                myquad.Tint = Color.PrettyRed.SetAlpha(230);
 
             i++;
         }, false);
@@ -204,7 +207,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
     protected void AddPlaceableObjectMenu()
     {
-        UISolidColor barContainer = new UISolidColor();
+        var barContainer = new UISolidColor();
         barContainer.StretchX = true;
         barContainer.StretchY = true;
         barContainer.WindowColor = Color.Black * 0.75f;
@@ -212,6 +215,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         barContainer.Anchor = UIAnchor.BottomCenter;
         barContainer.ParentAnchor = UIAnchor.BottomCenter;
         barContainer.Margins = new Rectangle(0, 0, 0, 5);
+        barContainer.MinSize = new Vector2(32, 32);
 
         var bar = new UICallbackListNavigator();
         bar.StretchX = true;
@@ -221,19 +225,18 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         bar.Id = "BuildingsBar";
         barContainer.AddChild(bar);
 
-        var types = EditorUtility.GetTypesWhichInherit<GameObject3D>();
-        for (int i = 0; i < types.Count; i++)
+        var buildings = GameDataDatabase.GetObjectsOfType<BuildingGameData>() ?? Array.Empty<BuildingGameData>();
+        for (int i = 0; i < buildings.Length; i++)
         {
-            if (types[i].GetType() == typeof(BaseTakeOneObject)) continue;
-            var type = types[i];
-            if (type.Assembly == typeof(Take1Map).Assembly)
-            {
-                UIObject3DWindow thisObjectWin = new UIObject3DWindow(type);
-                thisObjectWin.MaxSize = new Vector2(32);
-                thisObjectWin.MinSize = new Vector2(32);
-                
-                bar.AddChild(thisObjectWin);
-            }
+            var building = buildings[i];
+            var type = XMLHelpers.GetTypeByNameWithTypeHint(typeof(BaseTakeOneObject), building.ObjectClass);
+            if (type == null) continue;
+
+            UIObject3DWindow thisObjectWin = new UIObject3DWindow(type);
+            thisObjectWin.MaxSize = new Vector2(32);
+            thisObjectWin.MinSize = new Vector2(32);
+
+            bar.AddChild(thisObjectWin);
         }
         bar.SetupMouseSelection();
 

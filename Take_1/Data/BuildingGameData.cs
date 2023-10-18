@@ -8,10 +8,8 @@ namespace Take_1.Data
 
         public string ObjectClass { get; set; }
 
-        // [GameDataReference<ResourceGameData>]
-        public string[] Costs { get; set; }
+        public GameDataReference<ResourceGameData>[] Costs { get; set; }
 
-        // [GameDataReference<NeedGameData>]
-        public string[] Provides { get; set; }
+        public GameDataReference<NeedGameData>[] Provides { get; set; }
     }
 }
