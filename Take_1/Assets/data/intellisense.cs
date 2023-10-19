@@ -4,21 +4,21 @@ namespace GameData
 {
 	public static class BuildingGameDataDefs
 	{
-		public static readonly string PretzelShop = "PretzelShop";
-		public static readonly string TESTING_Tree = "TESTING_Tree";
-		public static readonly string ChocolateBar = "ChocolateBar";
-		public static readonly string Lights = "Lights";
+		public static readonly string Untitled = "Untitled";
+		public static readonly string Untitled_1 = "Untitled_1";
+		public static readonly string Untitled_2 = "Untitled_2";
+		public static readonly string Untitled_3 = "Untitled_3";
+		public static readonly string Untitled_4 = "Untitled_4";
+		public static readonly string Untitled_5 = "Untitled_5";
+		public static readonly string Untitled_6 = "Untitled_6";
 	}
 
 	public static class NeedGameDataDefs
 	{
-		public static readonly string Chocolate = "Chocolate";
-		public static readonly string HolidayCheer = "HolidayCheer";
-		public static readonly string Pretzels = "Pretzels";
 	}
 
 	public static class ResourceGameDataDefs
 	{
-		public static readonly string Money = "Money";
+		public static readonly string HolidayCheer = "HolidayCheer";
 	}
 }

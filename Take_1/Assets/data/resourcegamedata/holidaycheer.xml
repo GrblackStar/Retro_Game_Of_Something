@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<GameDataObject type="Take_1.Data.ResourceGameData">
+  <Id>HolidayCheer</Id>
+  <AssetPath>Data/ResourceGameData/HolidayCheer.xml</AssetPath>
+</GameDataObject>
