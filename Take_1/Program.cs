@@ -49,7 +49,6 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
     public UIController? UI;
     public Type? ObjectTypeToPlace;
     public BaseTakeOneObject? GhostObject;
-    public Type? QuadObjectsForType;
     public List<Quad3D>? QuadObjects;
 
     public override async Task LoadAsync()
@@ -100,10 +99,6 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             var thisTreeObject = (GameObject3D)Activator.CreateInstance(ObjectTypeToPlace);
             thisTreeObject.Position = GhostObject.Position;
             CurrentMap.AddObject(thisTreeObject);
-
-            ObjectTypeToPlace = null;
-            QuadObjectsForType = null;
-            RemovePlanesAndGhost();
 
             var buildingBarUI = UI.GetWindowById("BuildingsBar") as UICallbackListNavigator;
             buildingBarUI.ResetSelection(true);
@@ -169,22 +164,6 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             i++;
         }, false);
     }
-    
-    // check if the ghostObject is loded and it has bounds
-    public void UpdatePlanesForGhost()
-    {
-        var ghostObjectType = GhostObject?.GetType();
-        if (ghostObjectType != QuadObjectsForType && GhostObject.ObjectState == ObjectState.Alive)
-        {
-            QuadObjects?.Clear();
-            AddPlanesToList(GhostObject);
-            foreach (var item in QuadObjects)
-            {
-                CurrentMap.AddObject(item);
-            }
-            QuadObjectsForType = ghostObjectType;
-        }
-    }
 
     public void AddPlanesToList(GameObject3D gameObject)
     {
@@ -197,8 +176,19 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
             quadPiece.Z = 5.1f;
 
             QuadObjects.Add(quadPiece);
-        });
+        }, false);
     }
+
+    public void CreatePlanesForGhost()
+    {
+        QuadObjects?.Clear();
+        AddPlanesToList(GhostObject);
+        foreach (var item in QuadObjects)
+        {
+            CurrentMap.AddObject(item);
+        }
+    }
+
     public void RemovePlanesAndGhost()
     {
         CurrentMap.RemoveObject(GhostObject);
@@ -214,9 +204,6 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         base.Update();
         UI.Update();
         if (ObjectTypeToPlace != null) UpdateGhost(GhostObject);
-        UpdatePlanesForGhost();
-
-        // if we have a ghost object, initialise the Quad3Ds. find it in the currentmap
     }
 
     protected void AddPlaceableObjectMenu()
@@ -259,20 +246,23 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         {
             if (oldSel != null) oldSel.Selected = false;
 
+            if (GhostObject != null) RemovePlanesAndGhost();
+
             var nuAs = nu as UIObject3DWindow;
+            ObjectTypeToPlace = nuAs?.Type;
+            oldSel = nuAs;
             if (nuAs == null) return;
 
             nuAs.Selected = true;
-            ObjectTypeToPlace = nuAs.Type;
-            oldSel = nuAs;
 
-            if (GhostObject != null) RemovePlanesAndGhost();
-            
             GhostObject = Activator.CreateInstance(ObjectTypeToPlace) as BaseTakeOneObject;
             GhostObject.ShouldApplyToGrid = false;
             GhostObject.Tint = GhostObject.Tint.SetAlpha(150);
             GhostObject.ObjectFlags = ObjectFlags.Map3DDontThrowShadow;
+            GhostObject.Position = CurrentMap.SnapToGrid(Vector3.Zero);
             CurrentMap.AddObject(GhostObject);
+            CreatePlanesForGhost();
+            UpdateGhost(GhostObject);
         };
 
         UI.AddChild(barContainer);
