@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<GameDataObject type="Take_1.Data.BuildingGameData">
+  <Name>Cabin</Name>
+  <ObjectClass>Cabin</ObjectClass>
+  <Id>Cabin</Id>
+  <AssetPath>Data/BuildingGameData/Cabin.xml</AssetPath>
+</GameDataObject>
