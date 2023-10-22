@@ -13,6 +13,7 @@ using Emotion.Game.World3D.Objects;
 using Emotion.Game.World2D;
 using Emotion.ExecTest;
 using Emotion.Common.Serialization;
+using Emotion.IO;
 
 namespace Take_1
 {
@@ -25,6 +26,7 @@ namespace Take_1
             public bool IsOccupied;
         }
 
+        [DontSerialize]
         public TileData[][] gridData;
 
         private InfiniteGrid _gridObject;
@@ -149,7 +151,7 @@ namespace Take_1
                 }
             }
 
-            var patchesToPlace = 60;
+            var patchesToPlace = 0;
             var mapBounds = new Rectangle(
                 -groundTileBounds.X / 2f,
                 -groundTileBounds.Y / 2f,
@@ -236,6 +238,11 @@ namespace Take_1
         {
             base.Render(c);
 
+            //c.SetDepthTest(false);
+            var sofiaGuide = Engine.AssetLoader.Get<TextureAsset>("Maps/sofia_guide.png");
+            //c.RenderSprite(Vector3.Zero + _gridOffset.ToVec3(5.5f), sofiaGuide.Texture.Size, Color.White, sofiaGuide.Texture) ;
+            //c.SetDepthTest(true);
+            
             if(!visualized)
             {
                 //c.DbgClear();

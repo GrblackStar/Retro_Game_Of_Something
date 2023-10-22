@@ -59,7 +59,14 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         cam3D.LookAtPoint(Vector3.Zero);
         Engine.Renderer.Camera = cam3D;
 
-        await ChangeMapAsync(new Take1Map(new Vector2(10, 10)));
+        var mapAsset = Engine.AssetLoader.Get<XMLAsset<Take1Map>>("Maps/sofia.xml");
+        Take1Map map;
+        if (mapAsset?.Content == null)
+            map = new Take1Map(new Vector2(10, 10));
+        else
+            map = mapAsset.Content;
+
+        await ChangeMapAsync(map);
 
         UI = new UIController();
         AddPlaceableObjectMenu();
