@@ -86,6 +86,7 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         base.Draw(composer);
 
         composer.SetUseViewMatrix(false);
+        composer.ClearDepth();
         UI.Render(composer);
     }
 

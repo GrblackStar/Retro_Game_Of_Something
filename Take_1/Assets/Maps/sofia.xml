@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Object type="Take_1.Take1Map">
+<BaseMap type="Take_1.Take1Map">
   <MapSize>
     <X>10</X>
     <Y>10</Y>
@@ -917,13 +917,14 @@
     </BaseGameObject>
   </PersistentObjects>
   <LightModel>
-    <DiffuseStrength>0.6</DiffuseStrength>
+    <AmbientLightStrength>0.8</AmbientLightStrength>
+    <DiffuseStrength>0.5</DiffuseStrength>
     <AmbientLightColor>
       <R>220</R>
-      <G>200</G>
+      <G>220</G>
       <B>255</B>
       <A>255</A>
     </AmbientLightColor>
   </LightModel>
   <RenderShadowMap>True</RenderShadowMap>
-</Object>
+</BaseMap>
