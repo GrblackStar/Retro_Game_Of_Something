@@ -583,12 +583,12 @@
         <Y>6</Y>
       </Size>
       <Rotation>
-        <Y>0.15707964</Y>
+        <Y>-0.15707964</Y>
         <Z>0.7853982</Z>
       </Rotation>
       <Position>
         <X>49.76555</X>
-        <Y>239.4446</Y>
+        <Y>335.67957</Y>
       </Position>
       <EntityPath>naturekit/tree_pineroundf.fbx</EntityPath>
     </BaseGameObject>
@@ -712,6 +712,12 @@
       <EntityPath>naturekit/grass_leafslarge.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
       <ObjectName>VegDeco</ObjectName>
       <ObjectFlags>None</ObjectFlags>
       <Depth>3</Depth>
@@ -915,13 +921,82 @@
       </Position>
       <EntityPath>naturekit/tree_pinesmallb.fbx</EntityPath>
     </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <ObjectName>PlayAreaCenter</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <Position>
+        <X>506.98834</X>
+        <Y>338.02127</Y>
+        <Z>6</Z>
+      </Position>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <Depth>3</Depth>
+      <Size>
+        <X>3</X>
+        <Y>3</Y>
+      </Size>
+      <Position>
+        <X>56.84076</X>
+        <Y>331.8447</Y>
+        <Z>5.262227</Z>
+      </Position>
+      <EntityPath>naturekit/grass_leafslarge.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <Depth>3</Depth>
+      <Size>
+        <X>3</X>
+        <Y>3</Y>
+      </Size>
+      <Position>
+        <X>132.46118</X>
+        <Y>255.37906</Y>
+        <Z>5.262227</Z>
+      </Position>
+      <EntityPath>naturekit/grass_leafslarge.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Emotion.Game.World3D.Objects.GenericObject3D">
+      <ObjectName>PersonForScale</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <Depth>0.1</Depth>
+      <Size>
+        <X>0.1</X>
+        <Y>0.1</Y>
+      </Size>
+      <Rotation>
+        <Z>2.3561945</Z>
+      </Rotation>
+      <Position>
+        <X>92.06282</X>
+        <Y>67.62453</Y>
+        <Z>6.0869904</Z>
+      </Position>
+      <EntityPath>animatedcharacters/charactermedium.fbx</EntityPath>
+    </BaseGameObject>
   </PersistentObjects>
   <LightModel>
-    <AmbientLightStrength>0.8</AmbientLightStrength>
+    <AmbientLightStrength>0.7</AmbientLightStrength>
     <DiffuseStrength>0.5</DiffuseStrength>
     <AmbientLightColor>
-      <R>220</R>
-      <G>220</G>
+      <R>180</R>
+      <G>180</G>
       <B>255</B>
       <A>255</A>
     </AmbientLightColor>

@@ -43,6 +43,7 @@ namespace Take_1
             if (_previewImage == null && _previewObjectLoading.Status == TaskStatus.RanToCompletion)
             {
                 _previewObject.ObjectState = ObjectState.Alive;
+                _previewObject.RotationDeg = new Vector3(0, 0, 45);
                 _previewObject.Init();
                 var boundSphere = _previewObject.BoundingSphere;
 
@@ -50,8 +51,8 @@ namespace Take_1
                 previewCamera.LookAtPoint(boundSphere.Origin);
                 previewCamera.Update();
 
-                _previewImage = new FrameBuffer(new Vector2(64, 64)).WithColor();
-                RenderDoc.StartCapture();
+                _previewImage = new FrameBuffer(new Vector2(64, 64)).WithColor().WithDepth();
+                //RenderDoc.StartCapture();
 
                 CameraBase oldCamera = c.Camera;
                 c.RenderToAndClear(_previewImage);
@@ -64,7 +65,7 @@ namespace Take_1
                 c.SetUseViewMatrix(false);
                 c.Camera = oldCamera;
 
-                RenderDoc.EndCapture();
+                //RenderDoc.EndCapture();
             }
 
             c.RenderSprite(Position, Size, new Color(53, 53, 53) * 0.50f);

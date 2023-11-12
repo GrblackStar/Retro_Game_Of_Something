@@ -21,6 +21,7 @@ namespace Take_1
             base.Init();
             Entity.LocalTransform = System.Numerics.Matrix4x4.Identity;
             Entity.BackFaceCulling = false;
+            Entity.Forward = new System.Numerics.Vector3(0, 1, 0);
         }
     }
 }

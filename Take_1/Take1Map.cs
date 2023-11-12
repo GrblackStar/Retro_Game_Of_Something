@@ -14,6 +14,7 @@ using Emotion.Game.World2D;
 using Emotion.ExecTest;
 using Emotion.Common.Serialization;
 using Emotion.IO;
+using Emotion.Game.World;
 
 namespace Take_1
 {
@@ -31,6 +32,9 @@ namespace Take_1
 
         private InfiniteGrid _gridObject;
         private Vector2 _gridOffset;
+
+        [DontSerialize]
+        public BaseGameObject? PlayAreaCenter;
 
         public Take1Map(Vector2 mapSize)
         {
@@ -211,6 +215,12 @@ namespace Take_1
             }
 
             return base.InitAsyncInternal();
+        }
+
+        protected override Task PostMapLoad()
+        {
+            PlayAreaCenter = GetObjectByName("PlayAreaCenter");
+            return base.PostMapLoad();
         }
 
         // Transform one coordinate system to the other:
