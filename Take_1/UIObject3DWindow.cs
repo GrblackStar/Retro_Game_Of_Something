@@ -51,7 +51,7 @@ namespace Take_1
                 previewCamera.LookAtPoint(boundSphere.Origin);
                 previewCamera.Update();
 
-                _previewImage = new FrameBuffer(new Vector2(64, 64)).WithColor().WithDepth();
+                _previewImage = new FrameBuffer(new Vector2(256, 256)).WithColor().WithDepth();
                 //RenderDoc.StartCapture();
 
                 CameraBase oldCamera = c.Camera;

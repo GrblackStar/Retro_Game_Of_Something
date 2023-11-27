@@ -992,14 +992,19 @@
     </BaseGameObject>
   </PersistentObjects>
   <LightModel>
-    <AmbientLightStrength>0.7</AmbientLightStrength>
-    <DiffuseStrength>0.5</DiffuseStrength>
     <AmbientLightColor>
-      <R>180</R>
-      <G>180</G>
+      <R>150</R>
+      <G>150</G>
       <B>255</B>
       <A>255</A>
     </AmbientLightColor>
+    <DiffuseStrength>0.25</DiffuseStrength>
+    <ShadowOpacity>0.15</ShadowOpacity>
+    <SunDirection>
+      <X>0.2</X>
+      <Y>-0.2</Y>
+      <Z>0.3</Z>
+    </SunDirection>
   </LightModel>
   <RenderShadowMap>True</RenderShadowMap>
 </BaseMap>

@@ -57,8 +57,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
 
         var cam3D = new Camera3D(new Vector3(100));
         cam3D.LookAtPoint(Vector3.Zero);
-        cam3D.Position = new Vector3(837.4594f, 203.79001f, 211);
-        cam3D.LookAt = new Vector3(-0.81742316f, 0.011413167f, -0.5759246f);
+        cam3D.Position = new Vector3(922.2831f, 344.7375f, 391);
+        cam3D.LookAt = new Vector3(-0.677202f, 0.04379144f, -0.7344929f);
         Engine.Renderer.Camera = cam3D;
 
         var mapAsset = Engine.AssetLoader.Get<XMLAsset<Take1Map>>("Maps/sofia.xml");
@@ -151,15 +151,15 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
                     GhostObject.CanPlaceObject = false;
                 }
 
-                if (CurrentMap.PlayAreaCenter != null)
-                {
-                    ghost.RotateZToFacePoint(CurrentMap.PlayAreaCenter.Position);
-                    var deg = ghost.RotationDeg.Z;
-                    var snapped = MathF.Round(deg / 90f) * 90f;
-                    ghost.RotationDeg = new Vector3(0, 0, snapped);
-                }
+                //if (CurrentMap.PlayAreaCenter != null)
+                //{
+                //    ghost.RotateZToFacePoint(CurrentMap.PlayAreaCenter.Position);
+                //    var deg = ghost.RotationDeg.Z;
+                //    var snapped = MathF.Round(deg / 90f) * 90f;
+                //    ghost.RotationDeg = new Vector3(0, 0, snapped);
+                //}
 
-                break;
+                //break;
             }
 
         }
