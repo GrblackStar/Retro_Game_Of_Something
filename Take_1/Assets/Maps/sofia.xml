@@ -8,58 +8,51 @@
   <FileName>Maps/sofia.xml</FileName>
   <PersistentObjects>
     <BaseGameObject type="Emotion.Game.World3D.Objects.GenericObject3D">
-      <ObjectName>PersonForScale</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>0.1</Depth>
-      <Size>
-        <X>0.1</X>
-        <Y>0.1</Y>
-      </Size>
       <Position>
         <X>156.52039</X>
         <Y>-36.192257</Y>
         <Z>6.0869904</Z>
       </Position>
+      <Size3D>
+        <X>0.1</X>
+        <Y>0.1</Y>
+        <Z>0.1</Z>
+      </Size3D>
+      <ObjectName>PersonForScale</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>animatedcharacters/charactermedium.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>-210.78069</X>
         <Y>36.37836</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>4</Depth>
-      <Size>
-        <X>4</X>
-        <Y>4</Y>
-      </Size>
       <Position>
         <X>-209.9617</X>
         <Y>-33.895992</Y>
         <Z>4.8</Z>
       </Position>
+      <Size3D>
+        <X>4</X>
+        <Y>4</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stone.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -68,16 +61,16 @@
         <Y>19.536629</Y>
         <Z>4.8</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stone.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Z>-1.5707964</Z>
       </Rotation>
@@ -86,16 +79,16 @@
         <Y>82.2536</Y>
         <Z>4.8</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stone.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Y>0.08726646</Y>
       </Rotation>
@@ -104,31 +97,31 @@
         <Y>30.516357</Y>
         <Z>2.5013885</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>226.89388</X>
         <Y>30.525993</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -137,16 +130,16 @@
         <Y>82.79301</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -155,16 +148,16 @@
         <Y>181.23695</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -173,16 +166,16 @@
         <Y>29.848316</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -191,16 +184,16 @@
         <Y>350.64035</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -209,16 +202,16 @@
         <Y>293.29678</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -227,31 +220,31 @@
         <Y>237.41035</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>LogsDecoration</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>-223.6482</X>
         <Y>71.846466</Y>
         <Z>5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>LogsDecoration</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/log_stacklarge.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>LogsDecoration</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>0.57595867</Z>
       </Rotation>
@@ -260,39 +253,39 @@
         <Y>33.802383</Y>
         <Z>5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>LogsDecoration</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/log_stacklarge.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Entrance</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
       <Position>
         <X>199.08147</X>
         <Y>128.50781</Y>
       </Position>
+      <ObjectName>Entrance</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>RockDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>10</Depth>
-      <Size>
-        <X>10</X>
-        <Y>10</Y>
-      </Size>
       <Position>
         <X>82.01645</X>
         <Y>288.76968</Y>
         <Z>-17.962921</Z>
       </Position>
+      <Size3D>
+        <X>10</X>
+        <Y>10</Y>
+        <Z>10</Z>
+      </Size3D>
+      <ObjectName>RockDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/stone_largef.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>RockDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Rotation>
         <Z>0.36651915</Z>
       </Rotation>
@@ -301,16 +294,16 @@
         <Y>272.15683</Y>
         <Z>-3.0313873</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>RockDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/stone_largef.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>RockDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>2</Depth>
-      <Size>
-        <X>2</X>
-        <Y>2</Y>
-      </Size>
       <Rotation>
         <Z>-1.727876</Z>
       </Rotation>
@@ -319,16 +312,16 @@
         <Y>330.05988</Y>
         <Z>3.0103073</Z>
       </Position>
+      <Size3D>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </Size3D>
+      <ObjectName>RockDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/stone_largef.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Z>1.4660766</Z>
       </Rotation>
@@ -337,24 +330,25 @@
         <Y>-41.768963</Y>
         <Z>4.8</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stone.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>PeopleSpawn</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
       <Position>
         <X>149.21294</X>
         <Y>-95.227875</Y>
         <Z>6</Z>
       </Position>
+      <ObjectName>PeopleSpawn</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
     </BaseGameObject>
     <BaseGameObject type="Take_1.SnowPatch">
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>1</Y>
-      </Size>
       <Rotation>
         <Z>-0.5235988</Z>
       </Rotation>
@@ -363,30 +357,29 @@
         <Y>46.326057</Y>
         <Z>5</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>1</Z>
+      </Size3D>
+      <ObjectFlags>None</ObjectFlags>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>335.49957</X>
         <Y>32.529358</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePathCorner</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>4</Depth>
-      <Size>
-        <X>4</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Z>-1.5707964</Z>
       </Rotation>
@@ -395,76 +388,76 @@
         <Y>130.45209</Y>
         <Z>5</Z>
       </Position>
+      <Size3D>
+        <X>4</X>
+        <Y>4</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePathCorner</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stonecorner.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>389.74814</X>
         <Y>31.409477</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>443.4276</X>
         <Y>29.837845</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>496.87158</X>
         <Y>29.004868</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>550.40924</X>
         <Y>29.222542</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -473,16 +466,16 @@
         <Y>406.72708</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>Fence</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>5</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -491,31 +484,31 @@
         <Y>461.09158</Y>
         <Z>5.5</Z>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Position>
         <X>207.21045</X>
         <Y>128.52148</Y>
         <Z>4.8</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stone.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>8</Depth>
-      <Size>
-        <X>8</X>
-        <Y>10</Y>
-      </Size>
       <Rotation>
         <Z>0.7853982</Z>
       </Rotation>
@@ -523,30 +516,30 @@
         <X>34.36815</X>
         <Y>-12.500221</Y>
       </Position>
+      <Size3D>
+        <X>8</X>
+        <Y>8</Y>
+        <Z>10</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pineroundb.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>10</Depth>
-      <Size>
-        <X>10</X>
-        <Y>10</Y>
-      </Size>
       <Position>
         <X>508</X>
         <Y>338</Y>
       </Position>
+      <Size3D>
+        <X>10</X>
+        <Y>10</Y>
+        <Z>10</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pinesmalla.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Z>0.61086524</Z>
       </Rotation>
@@ -555,16 +548,16 @@
         <Y>150.00023</Y>
         <Z>3.8122025</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stonecircle.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>8</Depth>
-      <Size>
-        <X>8</X>
-        <Y>10</Y>
-      </Size>
       <Rotation>
         <Z>0.7853982</Z>
       </Rotation>
@@ -572,16 +565,16 @@
         <X>78.851326</X>
         <Y>223.25381</Y>
       </Position>
+      <Size3D>
+        <X>8</X>
+        <Y>8</Y>
+        <Z>10</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pineroundf.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>6</Y>
-      </Size>
       <Rotation>
         <Y>-0.15707964</Y>
         <Z>0.7853982</Z>
@@ -590,30 +583,31 @@
         <X>49.76555</X>
         <Y>335.67957</Y>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>6</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pineroundf.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StoneDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>8</Depth>
-      <Size>
-        <X>8</X>
-        <Y>5</Y>
-      </Size>
       <Position>
         <X>508</X>
         <Y>338</Y>
         <Z>5</Z>
       </Position>
+      <Size3D>
+        <X>8</X>
+        <Y>8</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>StoneDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/campfire_bricks.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>10</Depth>
-      <Size>
-        <X>10</X>
-        <Y>10</Y>
-      </Size>
       <Rotation>
         <Z>3.1415927</Z>
       </Rotation>
@@ -622,16 +616,15 @@
         <Y>-46.689255</Y>
         <Z>-128.92911</Z>
       </Position>
+      <Size3D>
+        <X>10</X>
+        <Y>10</Y>
+        <Z>10</Z>
+      </Size3D>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/cliff_stepscornerinner_rock.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>FlowerDeco</ObjectName>
-      <ObjectFlags>Map3DDontReceiveAmbient</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Rotation>
         <Y>0.17453292</Y>
       </Rotation>
@@ -640,21 +633,28 @@
         <Y>96.21468</Y>
         <Z>5</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>FlowerDeco</ObjectName>
+      <ObjectFlags>Map3DDontReceiveAmbient</ObjectFlags>
       <EntityPath>naturekit/flower_yellowb.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>VegDeco</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Position>
         <X>198.03862</X>
         <Y>102.24893</Y>
         <Z>3.9938412</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/grass_large.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
@@ -664,13 +664,6 @@
         <B>255</B>
         <A>255</A>
       </Tint>
-      <ObjectName>VegDeco</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Rotation>
         <Z>0.5235988</Z>
       </Rotation>
@@ -679,36 +672,43 @@
         <Y>10.011824</Y>
         <Z>4.4600143</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/grass_large.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>VegDeco</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Position>
         <X>194.67006</X>
         <Y>54.659145</Y>
         <Z>4.5495453</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/grass_large.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>VegDeco</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Position>
         <X>193.78313</X>
         <Y>86.41254</Y>
         <Z>3.9938412</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/grass_leafslarge.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
@@ -718,28 +718,21 @@
         <B>255</B>
         <A>255</A>
       </Tint>
-      <ObjectName>VegDeco</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Position>
         <X>125.62547</X>
         <Y>286.483</Y>
         <Z>3.9938412</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/grass_large.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Y>0.15707964</Y>
       </Rotation>
@@ -747,16 +740,16 @@
         <X>116.64396</X>
         <Y>247.26848</Y>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pineroundf.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>BenchDeco</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>6</Y>
-      </Size>
       <Rotation>
         <Z>-1.5707964</Z>
       </Rotation>
@@ -765,31 +758,31 @@
         <Y>182.45361</Y>
         <Z>3.8068008</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>6</Z>
+      </Size3D>
+      <ObjectName>BenchDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>holidaykit/bench.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Emotion.Game.World3D.Objects.GenericObject3D">
-      <ObjectName>PersonForScale</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>0.1</Depth>
-      <Size>
-        <X>0.1</X>
-        <Y>0.1</Y>
-      </Size>
       <Position>
         <X>157.04199</X>
         <Y>181.27266</Y>
         <Z>6.0869904</Z>
       </Position>
+      <Size3D>
+        <X>0.1</X>
+        <Y>0.1</Y>
+        <Z>0.1</Z>
+      </Size3D>
+      <ObjectName>PersonForScale</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>animatedcharacters/charactermedium.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Z>-1.5707964</Z>
       </Rotation>
@@ -798,16 +791,16 @@
         <Y>174.86327</Y>
         <Z>4.8</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stone.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Z>1.5707964</Z>
       </Rotation>
@@ -816,16 +809,16 @@
         <Y>235.60587</Y>
         <Z>4.8</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stone.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>6</Depth>
-      <Size>
-        <X>6</X>
-        <Y>4</Y>
-      </Size>
       <Rotation>
         <Z>-1.5707964</Z>
       </Rotation>
@@ -834,16 +827,16 @@
         <Y>297.73843</Y>
         <Z>4.8</Z>
       </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/path_stone.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>8</Depth>
-      <Size>
-        <X>8</X>
-        <Y>10</Y>
-      </Size>
       <Rotation>
         <Z>0.7853982</Z>
       </Rotation>
@@ -851,16 +844,16 @@
         <X>-24.52472</X>
         <Y>189.32776</Y>
       </Position>
+      <Size3D>
+        <X>8</X>
+        <Y>8</Y>
+        <Z>10</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pineroundb.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>7</Y>
-      </Size>
       <Rotation>
         <Z>0.7853982</Z>
       </Rotation>
@@ -868,16 +861,16 @@
         <X>-30.687317</X>
         <Y>153.16273</Y>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>7</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pinesmalla.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>7</Y>
-      </Size>
       <Rotation>
         <Z>0.7853982</Z>
       </Rotation>
@@ -885,16 +878,16 @@
         <X>-3.5557404</X>
         <Y>24.066994</Y>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>7</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pinesmalla.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>7</Y>
-      </Size>
       <Rotation>
         <Z>0.7853982</Z>
       </Rotation>
@@ -902,16 +895,16 @@
         <X>217.91783</X>
         <Y>-36.2193</Y>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>7</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pinesmalla.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>TreeDecor</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>5</Depth>
-      <Size>
-        <X>5</X>
-        <Y>7</Y>
-      </Size>
       <Rotation>
         <Z>0.7853982</Z>
       </Rotation>
@@ -919,16 +912,23 @@
         <X>-6.1073456</X>
         <Y>167.07837</Y>
       </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>7</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pinesmallb.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <ObjectName>PlayAreaCenter</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
       <Position>
         <X>506.98834</X>
         <Y>338.02127</Y>
         <Z>6</Z>
       </Position>
+      <ObjectName>PlayAreaCenter</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Tint>
@@ -937,18 +937,18 @@
         <B>255</B>
         <A>255</A>
       </Tint>
-      <ObjectName>VegDeco</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Position>
         <X>56.84076</X>
         <Y>331.8447</Y>
         <Z>5.262227</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/grass_leafslarge.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
@@ -958,28 +958,21 @@
         <B>255</B>
         <A>255</A>
       </Tint>
-      <ObjectName>VegDeco</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>3</Depth>
-      <Size>
-        <X>3</X>
-        <Y>3</Y>
-      </Size>
       <Position>
         <X>132.46118</X>
         <Y>255.37906</Y>
         <Z>5.262227</Z>
       </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/grass_leafslarge.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Emotion.Game.World3D.Objects.GenericObject3D">
-      <ObjectName>PersonForScale</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <Depth>0.1</Depth>
-      <Size>
-        <X>0.1</X>
-        <Y>0.1</Y>
-      </Size>
       <Rotation>
         <Z>2.3561945</Z>
       </Rotation>
@@ -988,6 +981,13 @@
         <Y>67.62453</Y>
         <Z>6.0869904</Z>
       </Position>
+      <Size3D>
+        <X>0.1</X>
+        <Y>0.1</Y>
+        <Z>0.1</Z>
+      </Size3D>
+      <ObjectName>PersonForScale</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
       <EntityPath>animatedcharacters/charactermedium.fbx</EntityPath>
     </BaseGameObject>
   </PersistentObjects>

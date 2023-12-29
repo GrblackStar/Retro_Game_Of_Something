@@ -191,8 +191,8 @@ public class TakeOneGame : World3DBaseScene<Take1Map>
         CurrentMap.ProcessGridTiles(gameObject, (x, y) =>
         {
             Quad3D quadPiece = new Quad3D();
-            quadPiece.Width = 25;
-            quadPiece.Depth = 25;
+            quadPiece.SizeX = 25;
+            quadPiece.SizeY = 25;
             quadPiece.Position = CurrentMap.GridToWorld(new Vector2(x, y));
             quadPiece.Z = 5.1f;
 
