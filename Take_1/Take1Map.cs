@@ -114,7 +114,7 @@ namespace Take_1
 
         protected override Task InitAsyncInternal()
         {
-            RenderShadowMap = true;
+            //RenderShadowMap = true;
 
             // do not delete for now
             _gridObject = new InfiniteGrid();

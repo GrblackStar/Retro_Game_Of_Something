@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Emotion\Emotion\Emotion.csproj" />
+    <ProjectReference Include="..\..\Emotion\Emotion\Emotion.csproj" />
   </ItemGroup>
 
   <ItemGroup>

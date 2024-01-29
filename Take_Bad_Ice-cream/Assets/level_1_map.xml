@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<BaseMap type="Emotion.Game.World2D.Map2D">
+  <MapSize>
+    <X>1600</X>
+    <Y>1600</Y>
+  </MapSize>
+  <MapName>Level_1_Map</MapName>
+  <FileName>Level_1_Map.xml</FileName>
+  <PersistentObjects>
+  </PersistentObjects>
+  <Tiles>
+    <Layers>
+      <Map2DTileMapLayer>
+        <Name>layer_1</Name>
+        <StringData>10000x0</StringData>
+      </Map2DTileMapLayer>
+    </Layers>
+    <Tilesets>
+      <Map2DTileset>
+        <AssetFile>roguelikesheet_transparent.png</AssetFile>
+        <Spacing>1</Spacing>
+      </Map2DTileset>
+    </Tilesets>
+  </Tiles>
+</BaseMap>
