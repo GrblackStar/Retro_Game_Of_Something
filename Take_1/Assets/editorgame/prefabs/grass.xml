@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<GameObjectPrefab>
+  <PrefabName>grass</PrefabName>
+  <PrefabVersion>1</PrefabVersion>
+  <ObjectData>&lt;?xml version="1.0"?>
+&lt;BaseGameObject type="Take_1.BaseTakeOneObject">
+  &lt;Tint>
+    &lt;R>230&lt;/R>
+    &lt;G>230&lt;/G>
+    &lt;B>255&lt;/B>
+    &lt;A>255&lt;/A>
+  &lt;/Tint>
+  &lt;Rotation>
+    &lt;Z>0.5235988&lt;/Z>
+  &lt;/Rotation>
+  &lt;Position>
+    &lt;X>197.36966&lt;/X>
+    &lt;Y>10.011824&lt;/Y>
+    &lt;Z>4.4600143&lt;/Z>
+  &lt;/Position>
+  &lt;Size3D>
+    &lt;X>3&lt;/X>
+    &lt;Y>3&lt;/Y>
+    &lt;Z>3&lt;/Z>
+  &lt;/Size3D>
+  &lt;ObjectName>VegDeco&lt;/ObjectName>
+  &lt;ObjectFlags>None&lt;/ObjectFlags>
+  &lt;EntityPath>naturekit/grass_large.fbx&lt;/EntityPath>
+&lt;/BaseGameObject></ObjectData>
+  <DefaultProperties>
+    <DictionaryOfStringObject>
+      <KeyValuePairOfStringObject>
+        <Key>Tint</Key>
+        <Value type="Emotion.Primitives.Color">
+          <R>230</R>
+          <G>230</G>
+          <B>255</B>
+          <A>255</A>
+        </Value>
+      </KeyValuePairOfStringObject>
+      <KeyValuePairOfStringObject>
+        <Key>Rotation</Key>
+        <Value type="System.Numerics.Vector3">
+          <Z>0.5235988</Z>
+        </Value>
+      </KeyValuePairOfStringObject>
+      <KeyValuePairOfStringObject>
+        <Key>Size3D</Key>
+        <Value type="System.Numerics.Vector3">
+          <X>3</X>
+          <Y>3</Y>
+          <Z>3</Z>
+        </Value>
+      </KeyValuePairOfStringObject>
+      <KeyValuePairOfStringObject>
+        <Key>ObjectName</Key>
+        <Value type="System.String">VegDeco</Value>
+      </KeyValuePairOfStringObject>
+      <KeyValuePairOfStringObject>
+        <Key>EntityPath</Key>
+        <Value type="System.String">naturekit/grass_large.fbx</Value>
+      </KeyValuePairOfStringObject>
+    </DictionaryOfStringObject>
+  </DefaultProperties>
+</GameObjectPrefab>
