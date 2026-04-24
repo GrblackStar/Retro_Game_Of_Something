@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <BaseMap type="Take_1.Take1Map">
   <MapSize>
-    <X>10</X>
-    <Y>10</Y>
+    <X>7</X>
+    <Y>7</Y>
   </MapSize>
   <MapName>sofia</MapName>
   <FileName>Maps/sofia.xml</FileName>
@@ -11,7 +11,7 @@
       <Position>
         <X>156.52039</X>
         <Y>-36.192257</Y>
-        <Z>6.0869904</Z>
+        <Z>5</Z>
       </Position>
       <Size3D>
         <X>0.1</X>
@@ -110,7 +110,7 @@
       <Position>
         <X>226.89388</X>
         <Y>30.525993</Y>
-        <Z>5.5</Z>
+        <Z>4.9</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -123,12 +123,13 @@
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Rotation>
+        <X>0.034906585</X>
         <Z>1.5707964</Z>
       </Rotation>
       <Position>
         <X>172.40932</X>
         <Y>82.79301</Y>
-        <Z>5.5</Z>
+        <Z>3.870037</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -141,12 +142,14 @@
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Rotation>
+        <X>-0.034906585</X>
+        <Y>-0.05235988</Y>
         <Z>1.5707964</Z>
       </Rotation>
       <Position>
         <X>174.35336</X>
         <Y>181.23695</Y>
-        <Z>5.5</Z>
+        <Z>1.9235935</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -164,7 +167,7 @@
       <Position>
         <X>173.13988</X>
         <Y>29.848316</Y>
-        <Z>5.5</Z>
+        <Z>4.10693</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -181,8 +184,8 @@
       </Rotation>
       <Position>
         <X>179.319</X>
-        <Y>350.64035</Y>
-        <Z>5.5</Z>
+        <Y>338.78772</Y>
+        <Z>4.394682</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -198,9 +201,9 @@
         <Z>1.5707964</Z>
       </Rotation>
       <Position>
-        <X>178.51643</X>
-        <Y>293.29678</Y>
-        <Z>5.5</Z>
+        <X>179.1988</X>
+        <Y>287.17398</Y>
+        <Z>4.5014286</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -217,8 +220,8 @@
       </Rotation>
       <Position>
         <X>176.69678</X>
-        <Y>237.41035</Y>
-        <Z>5.5</Z>
+        <Y>233.77045</Y>
+        <Z>4.2815228</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -246,21 +249,21 @@
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Rotation>
-        <Z>0.57595867</Z>
+        <Z>3.9269907</Z>
       </Rotation>
       <Position>
-        <X>224.08235</X>
-        <Y>33.802383</Y>
-        <Z>5</Z>
+        <X>434.5688</X>
+        <Y>236.76357</Y>
+        <Z>4.998184</Z>
       </Position>
       <Size3D>
-        <X>5</X>
-        <Y>5</Y>
-        <Z>5</Z>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
       </Size3D>
-      <ObjectName>LogsDecoration</ObjectName>
+      <ObjectName>PlanksDeco</ObjectName>
       <ObjectFlags>None</ObjectFlags>
-      <EntityPath>naturekit/log_stacklarge.fbx</EntityPath>
+      <EntityPath>naturekit/path_woodend.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Position>
@@ -350,25 +353,20 @@
     </BaseGameObject>
     <BaseGameObject type="Take_1.SnowPatch">
       <Rotation>
-        <Z>-0.5235988</Z>
+        <Z>1.5707964</Z>
       </Rotation>
       <Position>
-        <X>214.89435</X>
-        <Y>46.326057</Y>
-        <Z>5</Z>
+        <X>12.569931</X>
+        <Y>6.7680473</Y>
+        <Z>5.0000076</Z>
       </Position>
-      <Size3D>
-        <X>3</X>
-        <Y>3</Y>
-        <Z>1</Z>
-      </Size3D>
       <ObjectFlags>None</ObjectFlags>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Position>
         <X>335.49957</X>
         <Y>32.529358</Y>
-        <Z>5.5</Z>
+        <Z>4.9</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -401,7 +399,7 @@
       <Position>
         <X>389.74814</X>
         <Y>31.409477</Y>
-        <Z>5.5</Z>
+        <Z>4.9</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -416,7 +414,7 @@
       <Position>
         <X>443.4276</X>
         <Y>29.837845</Y>
-        <Z>5.5</Z>
+        <Z>4.9</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -431,7 +429,7 @@
       <Position>
         <X>496.87158</X>
         <Y>29.004868</Y>
-        <Z>5.5</Z>
+        <Z>4.9</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -443,10 +441,13 @@
       <EntityPath>naturekit/fence_simple.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>1.5707964</Z>
+      </Rotation>
       <Position>
-        <X>550.40924</X>
-        <Y>29.222542</Y>
-        <Z>5.5</Z>
+        <X>607.87317</X>
+        <Y>28.188904</Y>
+        <Z>3.0754762</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -455,7 +456,7 @@
       </Size3D>
       <ObjectName>Fence</ObjectName>
       <ObjectFlags>None</ObjectFlags>
-      <EntityPath>naturekit/fence_simple.fbx</EntityPath>
+      <EntityPath>naturekit/fence_bendcenter.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Rotation>
@@ -463,8 +464,8 @@
       </Rotation>
       <Position>
         <X>180.45392</X>
-        <Y>406.72708</Y>
-        <Z>5.5</Z>
+        <Y>393.0293</Y>
+        <Z>3.3620644</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -480,9 +481,9 @@
         <Z>1.5707964</Z>
       </Rotation>
       <Position>
-        <X>181.0979</X>
-        <Y>461.09158</Y>
-        <Z>5.5</Z>
+        <X>179.88814</X>
+        <Y>445.01422</Y>
+        <Z>3.5642319</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -527,8 +528,8 @@
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Position>
-        <X>508</X>
-        <Y>338</Y>
+        <X>420</X>
+        <Y>290</Y>
       </Position>
       <Size3D>
         <X>10</X>
@@ -538,24 +539,6 @@
       <ObjectName>TreeDecor</ObjectName>
       <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pinesmalla.fbx</EntityPath>
-    </BaseGameObject>
-    <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <Rotation>
-        <Z>0.61086524</Z>
-      </Rotation>
-      <Position>
-        <X>245.56708</X>
-        <Y>150.00023</Y>
-        <Z>3.8122025</Z>
-      </Position>
-      <Size3D>
-        <X>6</X>
-        <Y>6</Y>
-        <Z>4</Z>
-      </Size3D>
-      <ObjectName>StonePath</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
-      <EntityPath>naturekit/path_stonecircle.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Rotation>
@@ -594,8 +577,8 @@
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Position>
-        <X>508</X>
-        <Y>338</Y>
+        <X>420</X>
+        <Y>290</Y>
         <Z>5</Z>
       </Position>
       <Size3D>
@@ -665,12 +648,12 @@
         <A>255</A>
       </Tint>
       <Rotation>
-        <Z>0.5235988</Z>
+        <Z>1.5707964</Z>
       </Rotation>
       <Position>
-        <X>197.36966</X>
-        <Y>10.011824</Y>
-        <Z>4.4600143</Z>
+        <X>240.03114</X>
+        <Y>-17.771338</Y>
+        <Z>4.460823</Z>
       </Position>
       <Size3D>
         <X>3</X>
@@ -697,10 +680,16 @@
       <EntityPath>naturekit/grass_large.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
       <Position>
-        <X>193.78313</X>
-        <Y>86.41254</Y>
-        <Z>3.9938412</Z>
+        <X>229.64447</X>
+        <Y>-17.727678</Y>
+        <Z>3.9941578</Z>
       </Position>
       <Size3D>
         <X>3</X>
@@ -771,7 +760,7 @@
       <Position>
         <X>157.04199</X>
         <Y>181.27266</Y>
-        <Z>6.0869904</Z>
+        <Z>5</Z>
       </Position>
       <Size3D>
         <X>0.1</X>
@@ -823,9 +812,9 @@
         <Z>-1.5707964</Z>
       </Rotation>
       <Position>
-        <X>164.54898</X>
-        <Y>297.73843</Y>
-        <Z>4.8</Z>
+        <X>290.4194</X>
+        <Y>390.70575</Y>
+        <Z>4.798566</Z>
       </Position>
       <Size3D>
         <X>6</X>
@@ -841,17 +830,18 @@
         <Z>0.7853982</Z>
       </Rotation>
       <Position>
-        <X>-24.52472</X>
-        <Y>189.32776</Y>
+        <X>596.5396</X>
+        <Y>40.413025</Y>
+        <Z>1.8522568</Z>
       </Position>
       <Size3D>
-        <X>8</X>
-        <Y>8</Y>
-        <Z>10</Z>
+        <X>10</X>
+        <Y>12</Y>
+        <Z>13</Z>
       </Size3D>
       <ObjectName>TreeDecor</ObjectName>
       <ObjectFlags>None</ObjectFlags>
-      <EntityPath>naturekit/tree_pineroundb.fbx</EntityPath>
+      <EntityPath>naturekit/tree_fat_darkh.fbx</EntityPath>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Rotation>
@@ -889,11 +879,13 @@
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Rotation>
+        <Y>0.17453292</Y>
         <Z>0.7853982</Z>
       </Rotation>
       <Position>
-        <X>217.91783</X>
-        <Y>-36.2193</Y>
+        <X>225.78406</X>
+        <Y>-32.848698</Y>
+        <Z>-2.0045624</Z>
       </Position>
       <Size3D>
         <X>5</X>
@@ -920,15 +912,6 @@
       <ObjectName>TreeDecor</ObjectName>
       <ObjectFlags>None</ObjectFlags>
       <EntityPath>naturekit/tree_pinesmallb.fbx</EntityPath>
-    </BaseGameObject>
-    <BaseGameObject type="Take_1.BaseTakeOneObject">
-      <Position>
-        <X>506.98834</X>
-        <Y>338.02127</Y>
-        <Z>6</Z>
-      </Position>
-      <ObjectName>PlayAreaCenter</ObjectName>
-      <ObjectFlags>None</ObjectFlags>
     </BaseGameObject>
     <BaseGameObject type="Take_1.BaseTakeOneObject">
       <Tint>
@@ -979,7 +962,7 @@
       <Position>
         <X>92.06282</X>
         <Y>67.62453</Y>
-        <Z>6.0869904</Z>
+        <Z>5</Z>
       </Position>
       <Size3D>
         <X>0.1</X>
@@ -990,8 +973,648 @@
       <ObjectFlags>None</ObjectFlags>
       <EntityPath>animatedcharacters/charactermedium.fbx</EntityPath>
     </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <Rotation>
+        <Z>0.5235988</Z>
+      </Rotation>
+      <Position>
+        <X>197.35506</X>
+        <Y>10.124315</Y>
+        <Z>4.460018</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_large.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <Rotation>
+        <Z>0.5235988</Z>
+      </Rotation>
+      <Position>
+        <X>212.62221</X>
+        <Y>6.405882</Y>
+        <Z>4.4605637</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_large.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <Rotation>
+        <Z>1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>203.09723</X>
+        <Y>13.122032</Y>
+        <Z>4.4608192</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_large.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.7853982</Z>
+      </Rotation>
+      <Position>
+        <X>219.79152</X>
+        <Y>-24.134686</Y>
+        <Z>1.5258789E-05</Z>
+      </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>7</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/tree_pinesmalla.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.7853982</Z>
+      </Rotation>
+      <Position>
+        <X>241.89027</X>
+        <Y>-23.078617</Y>
+        <Z>-7.6293945E-06</Z>
+      </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>7</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/tree_pinesmalla.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <Rotation>
+        <Z>1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>201.35446</X>
+        <Y>3.3943138</Y>
+        <Z>4.4608192</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_large.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <Rotation>
+        <Z>1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>218.92635</X>
+        <Y>-32.591934</Y>
+        <Z>4.4608116</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_large.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <Rotation>
+        <Z>1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>212.46396</X>
+        <Y>-23.627922</Y>
+        <Z>4.4608154</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_large.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Tint>
+        <R>230</R>
+        <G>230</G>
+        <B>255</B>
+        <A>255</A>
+      </Tint>
+      <Rotation>
+        <Z>1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>243.44691</X>
+        <Y>-30.20166</Y>
+        <Z>4.4608154</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_large.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Position>
+        <X>193.6915</X>
+        <Y>85.69843</Y>
+        <Z>3.9938412</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_leafslarge.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Position>
+        <X>152.92255</X>
+        <Y>5.8141346</Y>
+        <Z>3.9938183</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>VegDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/grass_leafslarge.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.SnowPatch">
+      <Rotation>
+        <Z>2.7925267</Z>
+      </Rotation>
+      <Position>
+        <X>553.9283</X>
+        <Y>82.07769</Y>
+        <Z>4.9999237</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>holidaykit/snowman.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>3.4906585</Z>
+      </Rotation>
+      <Position>
+        <X>285.6978</X>
+        <Y>128.01865</Y>
+        <Z>3.8128433</Z>
+      </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stonecircle.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>-1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>166.88461</X>
+        <Y>296.8736</Y>
+        <Z>4.8000307</Z>
+      </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stone.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>-1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>300.59286</X>
+        <Y>131.73247</Y>
+        <Z>4.798444</Z>
+      </Position>
+      <Size3D>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stoneend.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Position>
+        <X>332.97348</X>
+        <Y>140.33305</Y>
+        <Z>4.800397</Z>
+      </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stone.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>288.43253</X>
+        <Y>328.33368</Y>
+        <Z>4.7985353</Z>
+      </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stone.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>-1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>287.3488</X>
+        <Y>207.86974</Y>
+        <Z>4.798505</Z>
+      </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stone.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Position>
+        <X>273.6425</X>
+        <Y>142.21748</Y>
+        <Z>4.798505</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stoneend.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.7853982</Z>
+      </Rotation>
+      <Position>
+        <X>282.39996</X>
+        <Y>171.57303</Y>
+        <Z>4.798505</Z>
+      </Position>
+      <Size3D>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stoneend.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>-1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>289.69876</X>
+        <Y>269.48642</Y>
+        <Z>4.798444</Z>
+      </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stone.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.61086524</Z>
+      </Rotation>
+      <Position>
+        <X>247.0553</X>
+        <Y>149.42749</Y>
+        <Z>3.8122177</Z>
+      </Position>
+      <Size3D>
+        <X>6</X>
+        <Y>6</Y>
+        <Z>4</Z>
+      </Size3D>
+      <ObjectName>StonePath</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_stonecircle.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.57595867</Z>
+      </Rotation>
+      <Position>
+        <X>443.04398</X>
+        <Y>257.73672</Y>
+        <Z>6.6636677</Z>
+      </Position>
+      <Size3D>
+        <X>0.5</X>
+        <Y>0.5</Y>
+        <Z>0.5</Z>
+      </Size3D>
+      <ObjectName>PresentsDecoration</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>holidaykit/present.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.7853982</Z>
+      </Rotation>
+      <Position>
+        <X>-21.899963</X>
+        <Y>189.51953</Y>
+      </Position>
+      <Size3D>
+        <X>8</X>
+        <Y>8</Y>
+        <Z>10</Z>
+      </Size3D>
+      <ObjectName>TreeDecor</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/tree_pineroundb.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Position>
+        <X>550.73425</X>
+        <Y>28.91951</Y>
+        <Z>4.9</Z>
+      </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>Fence</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/fence_simple.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.SnowPatch">
+      <Rotation>
+        <Z>0.34906584</Z>
+      </Rotation>
+      <Position>
+        <X>541.46655</X>
+        <Y>85.95492</Y>
+        <Z>5.0000153</Z>
+      </Position>
+      <Size3D>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>1</Z>
+      </Size3D>
+      <ObjectFlags>None</ObjectFlags>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.SnowPatch">
+      <Rotation>
+        <Z>-0.5235988</Z>
+      </Rotation>
+      <Position>
+        <X>220.40092</X>
+        <Y>46.62876</Y>
+        <Z>5.0000076</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>1</Z>
+      </Size3D>
+      <ObjectFlags>None</ObjectFlags>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.57595867</Z>
+      </Rotation>
+      <Position>
+        <X>228.19795</X>
+        <Y>34.979874</Y>
+        <Z>5.0000305</Z>
+      </Position>
+      <Size3D>
+        <X>5</X>
+        <Y>5</Y>
+        <Z>5</Z>
+      </Size3D>
+      <ObjectName>LogsDecoration</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/log_stacklarge.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.57595867</Z>
+      </Rotation>
+      <Position>
+        <X>442.36588</X>
+        <Y>268.19073</Y>
+        <Z>12.789642</Z>
+      </Position>
+      <Size3D>
+        <X>1</X>
+        <Y>1</Y>
+        <Z>2</Z>
+      </Size3D>
+      <ObjectName>PresentsDecoration</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>holidaykit/presentgreen.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.57595867</Z>
+      </Rotation>
+      <Position>
+        <X>451.91165</X>
+        <Y>261.03134</Y>
+        <Z>6.66366</Z>
+      </Position>
+      <Size3D>
+        <X>0.5</X>
+        <Y>0.5</Y>
+        <Z>0.5</Z>
+      </Size3D>
+      <ObjectName>PresentsDecoration</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>holidaykit/presentgreen.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <X>0.7853982</X>
+        <Z>3.1415927</Z>
+      </Rotation>
+      <Position>
+        <X>420.23563</X>
+        <Y>304.66025</Y>
+        <Z>76.52961</Z>
+      </Position>
+      <Size3D>
+        <X>2</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </Size3D>
+      <ObjectName>LightsDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>holidaykit/lightsmulti.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.57595867</Z>
+      </Rotation>
+      <Position>
+        <X>426.0518</X>
+        <Y>232.04189</Y>
+        <Z>4.9982147</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>PlanksDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/path_woodend.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Z>0.6981317</Z>
+      </Rotation>
+      <Position>
+        <X>423.06647</X>
+        <Y>247.4282</Y>
+        <Z>4.998184</Z>
+      </Position>
+      <Size3D>
+        <X>3</X>
+        <Y>3</Y>
+        <Z>3</Z>
+      </Size3D>
+      <ObjectName>LogsDecoration</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>naturekit/log_large.fbx</EntityPath>
+    </BaseGameObject>
+    <BaseGameObject type="Take_1.BaseTakeOneObject">
+      <Rotation>
+        <Y>-0.7853982</Y>
+        <Z>1.5707964</Z>
+      </Rotation>
+      <Position>
+        <X>434.438</X>
+        <Y>289.87552</Y>
+        <Z>76.56144</Z>
+      </Position>
+      <Size3D>
+        <X>2.1</X>
+        <Y>2</Y>
+        <Z>2</Z>
+      </Size3D>
+      <ObjectName>LightsDeco</ObjectName>
+      <ObjectFlags>None</ObjectFlags>
+      <EntityPath>holidaykit/lightsmulti.fbx</EntityPath>
+    </BaseGameObject>
   </PersistentObjects>
   <LightModel>
+    <SunDirection>
+      <X>0.48507124</X>
+      <Y>-0.48507124</Y>
+      <Z>0.7276069</Z>
+    </SunDirection>
     <AmbientLightColor>
       <R>150</R>
       <G>150</G>
@@ -1000,11 +1623,5 @@
     </AmbientLightColor>
     <DiffuseStrength>0.25</DiffuseStrength>
     <ShadowOpacity>0.15</ShadowOpacity>
-    <SunDirection>
-      <X>0.2</X>
-      <Y>-0.2</Y>
-      <Z>0.3</Z>
-    </SunDirection>
   </LightModel>
-  <RenderShadowMap>True</RenderShadowMap>
 </BaseMap>
